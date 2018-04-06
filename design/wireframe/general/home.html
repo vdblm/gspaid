@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-    <h1>
-        GSPaid
-    </h1>
+    <div>
+        <h1>
+            GSPaid
+        </h1>
+        <a href="rules.html">Rules</a>
+        <a href="../customer/dashboard.html">Dashboard</a>
+        <a href="../admin/dashboard.html">(Admin Dashboard)</a>
+        <a href="rules.html">Register</a>
+        <a href="rules.html">Login</a>
+        <a href="../customer/profile.html">(Profile)</a>
+    </div>
     <h2>About Us</h2>
     <div>
         <p>
@@ -30,6 +39,24 @@
         </tr>
     </table>
 
+    <h2>Converter</h2>
+
+    <form>
+        <label for="amount">Amount</label>
+        <input id="amount" value="20">
+        <label for="src_currency">Source Currency</label>
+        <select id="src_currency" value="$">
+            <option value="$">$</option>
+            <option value="Rial">Rial</option>
+        </select>
+        <label for="dst_currency">Destination Currency</label>
+        <select id="dst_currency" value="Rial">
+            <option value="$">$</option>
+            <option value="Rial">Rial</option>
+        </select>
+        <label>Result: 984580 Rial</label>
+    </form>
+
     <h2>Contact Us</h2>
     <form>
         <label for="name">Name</label>
@@ -38,6 +65,7 @@
         <input id="email">
         <label for="description"></label>
         <textarea id="description"></textarea>
+        <input type="submit">
     </form>
 </body>
 </html>
