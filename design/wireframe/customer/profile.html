@@ -2,8 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Dashboard</title>
-        <link rel="stylesheet" href="styles.css">
+        <title>Profile</title>
+        <link rel="stylesheet" href="../styles.css">
     </head>
     <body>
         <table>
@@ -21,16 +21,28 @@
                 </td>
                 <td width="80%">
                        <form>
-        <label for="first_name">First Name</label>
-        <input id="first_name">
-        <label for="last_name">Last Name</label>
-        <input id="last_name">
-        <label for="type">Type</label>
+        <label for="firstName">First name</label>
+        <input type="string" id="firstName">
+	<br><br>
+ 	<label for="lastName">Last name</label>
+        <input type="string" id="lastName">
+	<br><br>
+ 	<label for="phoneNumber">Phone number</label>
+        <input type="string" id="phoneNumber">
+	<br><br>
+ 	<label for="email">Email</label>
+        <input type="string" id="email">
+	<br><br>
+<label for="notification">Notification</label>
         <select id="type">
-            <option value="employee">Employee</option>
-            <option value="employee">Admin</option>
-            <option value="employee">Employee</option>
+            <option value="Email">Email</option>
+            <option value="SMS">SMS</option>
         </select>
+	<br><br>
+        <input type="submit" value="CHANGE PROFILE">
+    </form>
+    <form method="get" action="changePassword.html">
+        <input type="submit" value="CHANGE PASSWORD">
     </form>
                 </td>
             </tr>
