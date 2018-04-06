@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Charge</title>
+</head>
+<body>
+<form method="get" action="new_request.html">
+    <label for="title">Title: </label>
+    <select id="title" value="TOEFL Exam">
+        <option value="TOEFL Exam">TOEFL Exam</option>
+        <option value="Pay for visa">Pay for visa</option>
+    </select>
+    
+    <label for="amount">Amount: </label>
+    <input type="number" id="amount" readonly="readonly" value="100000000">
+
+    <label for="currency">Currency: </label>
+    <input type="text" id="currency" readonly="readonly" value="$">
+
+    <br>
+    <label for="extra-info">extra info needed: </label>
+    <textarea rows="8" type="text" id="extra-info" readonly="readonly">PostalCode  Father's name</textarea>
+
+    <label for="extra-data">extra data: </label>
+    <textarea rows="8" type="text" id="extra-data" ></textarea>
+
+    <label for="files">Zipped files</label>
+    <input type="file" id="files">
+
+    <input type="submit" value="Submit">
+
+</form>
+</body>
+</html>
