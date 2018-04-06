@@ -7,9 +7,6 @@
 </head>
 <body>
 <form method="get" action="single_request.html">
-    <label for="costumer">Costumer: </label>
-    <input type="text" id="costumer" readonly="readonly" value="Alto">
-
     <label for="employee">Employee: </label>
     <input type="text" id="employee" readonly="readonly" value="SMAKH">
 
@@ -27,16 +24,16 @@
     <textarea rows="8" type="text" id="extra-info" readonly="readonly">PostalCode  Father's name</textarea>
 
     <label for="extra-data">extra data: </label>
-    <textarea rows="8" type="text" id="extra-data" readonly="readonly">PostalCode: 8943258372<br/>Father's name: Ali</textarea>
+    <textarea rows="8" type="text" id="extra-data">PostalCode: 8943258372<br/>Father's name: Ali</textarea>
 
     <label><a href="filepath.zip">Zipped files </a></label>
+    <input type="file" id="files">
 
     <br>
     <label for="action-info">employee's description</label>
-    <textarea rows="8" type="text" id="action-info">canceled because lack of data, please give all data needed, or / Succeed, needed information is attached in a email sent to you</textarea>
+    <textarea rows="8" type="text" id="action-info">canceled because lack of data, please give all data needed</textarea>
 
-    <input type="submit" value="Cancel">
-    <input type="submit" value="Success">
+    <input type="submit" value="Update Info">
 
 </form>
 </body>
