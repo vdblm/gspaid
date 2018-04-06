@@ -1,51 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Profile</title>
-        <link rel="stylesheet" href="../styles.css">
-    </head>
-    <body>
-        <table>
-            <tr>
-                <td width="20%">
-                    <table>
-                        <tbody>
-                        <tr><td><a href="profile.html">Profile</a></td></tr>
-                        <tr><td><a href="onlineWallet.html">Wallet</a></td></tr>
-                        <tr><td><a href="transactions.html">Transactions</a></td></tr>
-      
-                        <tr><td><a href="dashboard.html">Log</a></td></tr>
-                        </tbody>
-                    </table>
-                </td>
-                <td width="80%">
-                       <form action="changed_profile.html">
-        <label for="firstName">First name</label>
-        <input type="string" id="firstName">
-	<br><br>
- 	<label for="lastName">Last name</label>
-        <input type="string" id="lastName">
-	<br><br>
- 	<label for="phoneNumber">Phone number</label>
-        <input type="string" id="phoneNumber">
-	<br><br>
- 	<label for="email">Email</label>
-        <input type="string" id="email">
-	<br><br>
-<label for="notification">Notification</label>
-        <select id="notification">
-            <option value="Email">Email</option>
-            <option value="SMS">SMS</option>
-        </select>
-	<br><br>
-        <input type="submit" value="CHANGE PROFILE">
-    </form>
-    <form method="get" action="change_password.html">
-        <input type="submit" value="CHANGE PASSWORD">
-    </form>
-                </td>
-            </tr>
-        </table>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<table>
+    <tr>
+        <td width="20%">
+            <table>
+                <tbody>
+                <tr>
+                    <td><a href="profile.html">Profile</a></td>
+                </tr>
+                <tr>
+                    <td><a href="onlineWallet.html">Wallet</a></td>
+                </tr>
+                <tr>
+                    <td><a href="transactions.html">Transactions</a></td>
+                </tr>
+
+                <tr>
+                    <td><a href="dashboard.html">Log</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td width="80%">
+            <form action="changed_profile.html">
+                <label for="firstName">First name</label>
+                <input type="string" id="firstName">
+                <br><br>
+                <label for="lastName">Last name</label>
+                <input type="string" id="lastName">
+                <br><br>
+                <label for="phoneNumber">Phone number</label>
+                <input type="string" id="phoneNumber">
+                <br><br>
+                <label for="email">Email</label>
+                <input type="string" id="email">
+                <br><br><label for="other">Other Information</label>
+                <input type="text" id="other">
+                <br><br>
+                <label for="notification">Notification</label>
+                <select id="notification">
+                    <option value="Email">Email</option>
+                    <option value="SMS">SMS</option>
+                </select>
+                <br><br>
+                <input type="submit" value="CHANGE PROFILE">
+            </form>
+            <form method="get" action="change_password.html">
+                <input type="submit" value="CHANGE PASSWORD">
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
 </html>
