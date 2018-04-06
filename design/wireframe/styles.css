@@ -7,6 +7,6 @@ td {
     border: solid;
 }
 
-textarea {
+textarea, select, input {
     width: 100%;
 }

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div>
+        <h1>
+            GSPaid
+        </h1>
+        <a href="rules.html">Rules</a>
+        <a href="../customer/dashboard.html">Dashboard</a>
+        <a href="../admin/dashboard.html">(Admin Dashboard)</a>
+        <a href="../customer/signup_login.html">Register</a>
+        <a href="../customer/login.html">Login</a>
+        <a href="../customer/profile.html">(Profile)</a>
+    </div>
+    <h2>About Us</h2>
+    <div>
+        <p>
+            Our company has started with a mission of borderless fintech. We are really good and great things happen here. We are proud to say that we get any **** financial requests done!
+        </p>
+    </div>
+    <h2>Live Currency</h2>
+    <table>
+        <thead>
+            <th>USD</th>
+            <th>Euro</th>
+        </thead>
+        <tr>
+            <td>
+                <img src="chart.jpeg">
+            </td>
+            <td>
+                <img src="chart.jpeg">
+            </td>
+        </tr>
+    </table>
+
+    <h2>Converter</h2>
+
+    <form>
+        <label for="amount">Amount</label>
+        <input id="amount" value="20">
+        <label for="src_currency">Source Currency</label>
+        <select id="src_currency" value="$">
+            <option value="$">$</option>
+            <option value="Rial">Rial</option>
+        </select>
+        <label for="dst_currency">Destination Currency</label>
+        <select id="dst_currency" value="Rial">
+            <option value="$">$</option>
+            <option value="Rial">Rial</option>
+        </select>
+        <label>Result: 984580 Rial</label>
+    </form>
+
+    <h2>Contact Us</h2>
+    <form>
+        <label for="name">Name</label>
+        <input id="name">
+        <label for="email">Email</label>
+        <input id="email">
+        <label for="description"></label>
+        <textarea id="description"></textarea>
+        <input type="submit">
+    </form>
+</body>
+</html>
