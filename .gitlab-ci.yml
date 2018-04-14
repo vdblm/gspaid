@@ -1,0 +1,24 @@
+stages:
+  - test
+  - deploy
+
+
+test:
+  stage: test
+  image: python
+  script:
+    - pip install -U selenium
+    - apt-get -q update
+    - apt-get -yq install firefox-esr
+    - apt-get -yq install Xvfb
+    - initial_dir=`pwd`
+    - cd /usr/bin
+    - wget https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-linux64.tar.gz
+    - tar -xvzf geckodriver*
+    - chmod +x geckodriver
+    - cd $initail_dir
+    - Xvfb :1 &
+    - pid_to_kill=$!
+    - export DISPLAY=:1
+    - python manage.py test
+    - kill $pid_to_kill
