@@ -8,7 +8,8 @@ test:
   image: python
   script:
     - pip install -U selenium
-    - apt-get -yq install firefox
+    - apt-get -q update
+    - apt-get -yq install firefox-esr
     - apt-get -yq install Xvfb
     - initial_dir=`pwd`
     - cd /usr/bin
@@ -21,4 +22,3 @@ test:
     - export DISPLAY=:1
     - python manage.py test
     - kill $pid_to_kill
-
