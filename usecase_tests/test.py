@@ -1,23 +1,18 @@
-from selenium import webdriver
-import unittest
 import time
+import unittest
+
+from selenium import webdriver
 
 
-unit_test = unittest.TestCase
+class ContactAdminTest(unittest.TestCase):
+    def setUp(self):
+        self.driver = webdriver.Chrome('C:\\Users\\vahid\\Desktop\\chromedriver.exe')
 
-
-browser = webdriver.Chrome('C:\\Users\\vahid\\Desktop\\chromedriver.exe')
-browser.get("file:///D:/Sharif/Term/SAD/gspaid/documents/design/wireframe/general/home.html")
-
-time.sleep(3)
-name = browser.find_element_by_id("name")
-email = browser.find_element_by_id("email")
-description = browser.find_element_by_id("description")
-name.send_keys("vahid")
-email.send_keys("1")
-description.send_keys("slala")
-
-# time.sleep(10)
-submit_attempt = browser.find_element_by_xpath("//*[@type='submit']")
-submit_attempt.submit()
-
+    def test_contact_admin(self):
+        driver = self.driver
+        driver.get("file:///D:/Sharif/Term/SAD/gspaid/documents/design/wireframe/general/home.html")
+        time.sleep(1)
+        name = driver.find_element_by_id("name")
+        email = driver.find_element_by_id("email")
+        description = driver.find_element_by_id("description")
+        
