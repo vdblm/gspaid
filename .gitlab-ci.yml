@@ -13,7 +13,7 @@ test:
     - pip install -r requirements.txt
     - initial_dir=`pwd`
     - cd /usr/bin
-    - wget https://github.com/mozilla/geckodriver/releases/download/v0.15.0/geckodriver-v0.15.0-linux64.tar.gz
+    - wget https://github.com/mozilla/geckodriver/releases/download/v0.16.0/geckodriver-v0.16.0-linux64.tar.gz
     - tar -xvzf geckodriver*
     - chmod +x geckodriver
     - cd $initial_dir

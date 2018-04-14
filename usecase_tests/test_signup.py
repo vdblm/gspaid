@@ -25,6 +25,7 @@ class ContactAdminTest(unittest.TestCase):
         password_input = browser.find_element_by_id('password')
         password_confirmation_input = browser.find_element_by_id('passwordConfirmation')
         email_input = browser.find_element_by_id('email')
+        submit_button = browser.find_element_by_css_selector('input[type=submit]')
 
         first_name_input.send_keys('Ali')
         last_name_input.send_keys('Asgari')
@@ -33,9 +34,9 @@ class ContactAdminTest(unittest.TestCase):
         password_input.send_keys('very_easy_password')
         password_confirmation_input.send_keys('very_easy_password')
         email_input.send_keys('altostratous@god.com')
-        submit_button.click()
+        submit_button.submit()
 
-        self.assertTrue('Successfully' in browser.page_source)
+        self.assertTrue('YOUR ACCOUNT HAS BEEN CREATED' in browser.page_source)
 
     def tearDown(self):
         super().tearDown()
