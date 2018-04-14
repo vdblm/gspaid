@@ -35,28 +35,47 @@ class ContactAdminTest(unittest.TestCase):
         submit_button.submit()
 
     def test_signup_basic_scenario(self):
-        self.base_signup(self, 'Ali', 'Asgari', 'alto', '09136466666',
+        self.base_signup('Ali', 'Asgari', 'alto', '09136466666',
                          'very_easy_password', 'very_easy_password', 'altostratous@god.com')
 
         self.assertTrue('YOUR ACCOUNT HAS BEEN CREATED' in self.browser.page_source)
 
     def test_signup_alternative_incomplete_data_scenario(self):
-        self.base_signup(self, 'Ali', 'Asgari', 'alto', '',
+        self.base_signup('Ali', 'Asgari', 'alto', '',
                          'very_easy_password', 'very_easy_password', 'altostratous@god.com')
 
         self.assertTrue('Incomplete data' in self.browser.page_source)
 
+    def test_signup_alternative_incorrect_input_format_scenario(self):
+        self.base_signup('Ali', 'Asgari', 'alto', '',
+                         'short', 'short', 'altostratous.god.com')
+
+        labels = self.browser.find_elements_by_css_selector("label")
+
+        password_error_seen = False
+        email_error_seen = False
+
+        for label in labels:
+            if 'Password must be at least 8 characters long.' in label.text:
+                password_error_seen = True
+
+            if 'Wrong Email Format.' in label.text:
+                email_error_seen = True
+
+        self.assertTrue(password_error_seen)
+        self.assertTrue(email_error_seen)
+
     def test_signup_alternative_passwords_unmatched_scenario(self):
-        self.base_signup(self, 'Ali', 'Asgari', 'alto', '09136466666',
+        self.base_signup('Ali', 'Asgari', 'alto', '09136466666',
                          'a_password', 'another_password', 'altostratous@god.com')
 
         self.assertTrue("Passwords don't match" in self.browser.page_source)
 
     def test_signup_alternative_username_taken_scenario(self):
-        self.base_signup(self, 'Ali', 'Asgari', 'alto', '09136466666',
+        self.base_signup('Ali', 'Asgari', 'alto', '09136466666',
                          'very_easy_password', 'very_easy_password', 'altostratous@god.com')
 
-        self.base_signup(self, 'Ali2', 'Asgari2', 'alto', '09136466636',
+        self.base_signup('Ali2', 'Asgari2', 'alto', '09136466636',
                          'another_easy_password', 'another_easy_password', 'altosous@god.com')
 
         self.assertTrue("Username is taken" in self.browser.page_source)
