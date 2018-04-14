@@ -1,7 +1,10 @@
+from pyvirtualdisplay import Display
 from selenium import webdriver
 
-browser = webdriver.Firefox()
+display = Display(visible=0, size=(800, 600))
+display.start()
 
-browser.get("www.google.com")
+browser = webdriver.Firefox()
+browser.get('http://www.python.org')
 
 browser.close()
