@@ -33,6 +33,7 @@ class ContactAdminTest(unittest.TestCase):
         email_pattern = "[^@]+@[^@]+\.[^@]+"
         if (not re.match(email_pattern, email)) or len(name) is 0 or len(description) is 0:
             self.assertIn("Wrong Email or Empty Field", driver.page_source)
+        self.assertIn("Your Comment Submitted", driver.page_source)
         driver.close()
 
     def test_contact_admin_wrong_email(self):
