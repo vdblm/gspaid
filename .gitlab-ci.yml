@@ -8,7 +8,12 @@ test:
   image: python
   script:
     - apt-get -q update
-    - ./latest-firefox.sh --install
+    - apt-get -yq install firefox-esr
+    - wget -O FirefoxSetup.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
+    - mkdir /opt/firefox
+    - tar xjf FirefoxSetup.tar.bz2 -C /opt/firefox/
+    - mv /usr/lib/firefox-esr/firefox-esr /usr/lib/firefox-esr/firefox-esr_orig
+    - ln -s /opt/firefox/firefox/firefox /usr/lib/firefox-esr/firefox-esr
     - apt-get -yq install Xvfb
     - pip install -r requirements.txt
     - initial_dir=`pwd`
