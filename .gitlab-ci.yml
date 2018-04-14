@@ -8,7 +8,7 @@ test:
   image: python
   script:
     - apt-get -q update
-    - ./latest-firefox.sh
+    - ./latest-firefox.sh --install
     - apt-get -yq install Xvfb
     - pip install -r requirements.txt
     - initial_dir=`pwd`
