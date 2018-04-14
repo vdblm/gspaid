@@ -1,8 +1,6 @@
-import time
 import unittest
 
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
 
 
 class ContactAdminTest(unittest.TestCase):
@@ -41,5 +39,3 @@ class ContactAdminTest(unittest.TestCase):
     def tearDown(self):
         super().tearDown()
         self.browser.close()
-
-
