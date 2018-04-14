@@ -8,10 +8,14 @@ from selenium import webdriver
 class ContactAdminTest(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome('C:\\Users\\vahid\\Desktop\\chromedriver.exe')
+        self.wireframe_host_name = "file:///D:/Sharif/Term/SAD/gspaid/documents/design/wireframe"
 
-    def help_test_contact_admin(self, name, email, description):
+    def wireframe_address(self, path):
+        return self.wireframe_host_name + path
+
+    def help_contact_admin(self, name, email, description):
         driver = self.driver
-        driver.get("file:///D:/Sharif/Term/SAD/gspaid/documents/design/wireframe/general/home.html")
+        driver.get(self.wireframe_address("/general/home.html"))
         time.sleep(1)
         name_field = driver.find_element_by_id("name")
         email_field = driver.find_element_by_id("email")
@@ -31,22 +35,20 @@ class ContactAdminTest(unittest.TestCase):
         submit_attempt.submit()
 
         email_pattern = "[^@]+@[^@]+\.[^@]+"
+
         if (not re.match(email_pattern, email)) or len(name) is 0 or len(description) is 0:
             self.assertIn("Wrong Email or Empty Field", driver.page_source)
         self.assertIn("Your Comment Submitted", driver.page_source)
         driver.close()
 
     def test_contact_admin_wrong_email(self):
-        self.help_test_contact_admin(email="vahid.mail.com", name="vahid", description="hello")
+        self.help_contact_admin(email="vahid.mail.com", name="vahid", description="hello")
 
     def test_contact_admin_empty_name(self):
-        self.help_test_contact_admin(email="vahid@gmail.com", name="", description="hello")
+        self.help_contact_admin(email="vahid@gmail.com", name="", description="hello")
 
     def test_contact_admin_empty_description(self):
-        self.help_test_contact_admin(email="vahid@gmail.com", name="vahid", description="")
+        self.help_contact_admin(email="vahid@gmail.com", name="vahid", description="")
 
     def test_contact_admin_base_scenario(self):
-        self.help_test_contact_admin(email="vahid@gmail.com", name="vahid", description="hello")
-
-
-unittest.main()
+        self.help_contact_admin(email="vahid@gmail.com", name="vahid", description="hello")
