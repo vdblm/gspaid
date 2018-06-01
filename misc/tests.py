@@ -14,11 +14,9 @@ class Tests(LiveServerTestCase):
     def test_about_us(self):
         selenium = self.selenium
         selenium.get('http://127.0.0.1:8000/misc/about_us')
-
         self.assertTrue('About Us' in self.selenium.page_source)
 
     def test_rules(self):
         selenium = self.selenium
         selenium.get('http://127.0.0.1:8000/misc/rules')
-
         self.assertTrue('Rules' in self.selenium.page_source)

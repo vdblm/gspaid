@@ -2,17 +2,16 @@ from django.test import LiveServerTestCase
 from selenium import webdriver
 
 
-class LiveCurrencyTest(LiveServerTestCase):
+class Tests(LiveServerTestCase):
     def setUp(self):
         self.selenium = webdriver.Chrome()
-        super(LiveCurrencyTest, self).setUp()
-
-    def test_live_currency(self):
-        selenium = self.selenium
-        selenium.get('http://127.0.0.1:8000/financial/live_currency')
-
-        self.assertTrue('Live Currency' in self.selenium.page_source)
+        super(Tests, self).setUp()
 
     def tearDown(self):
         self.selenium.quit()
-        super(LiveCurrencyTest, self).tearDown()
+        super(Tests, self).tearDown()
+
+    def test_about_us(self):
+        selenium = self.selenium
+        selenium.get('http://127.0.0.1:8000/financial/live_currency')
+        self.assertTrue('Live Currency' in self.selenium.page_source)
