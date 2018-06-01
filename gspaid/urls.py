@@ -16,11 +16,18 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from misc import urls as misc_url
+from misc import urls as misc_urls
 from authorization import urls as authorization_urls
+from financial import urls as financial_urls
+from workflow import urls as workflow_urls
+from management import urls as management_urls
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^misc/', include(misc_urls)),
     url(r'^authorization/', include(authorization_urls)),
-    url(r'^misc/', include(misc_url)),
+    url(r'^financial/', include(financial_urls)),
+    url(r'^workflow/', include(workflow_urls)),
+    url(r'^management/', include(management_urls)),
 ]

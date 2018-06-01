@@ -1,10 +1,5 @@
-import unittest
-
-from django.test import TestCase, LiveServerTestCase
+from django.test import LiveServerTestCase
 from selenium import webdriver
-from django.conf import settings
-
-# Create your tests here.
 
 
 class AboutUsTest(LiveServerTestCase):
