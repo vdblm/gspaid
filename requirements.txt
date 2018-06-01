@@ -1,3 +1,4 @@
 PyVirtualDisplay==0.2.1
 selenium==3.11.0
-django==2.0.4
+django==1.11.13
+django-registration==2.4.1
