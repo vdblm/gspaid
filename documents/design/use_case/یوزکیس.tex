@@ -1,0 +1,114 @@
+%hello
+%please do the todos
+\documentclass[11pt]{article}
+%\usepackage{changepage}
+%\usepackage{lipsum} % just for the example
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{mathpazo}
+\usepackage[normalem]{ulem}
+\usetikzlibrary{shapes, arrows}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage{amsmath}
+\usepackage{xepersian}
+\usepackage{graphicx}
+\settextfont{XB Niloofar}
+\setlatintextfont{Linux Libertine O}
+\setdigitfont{XB Niloofar}
+\title{
+موارد کاربردی جی‌اس‌پید
+}
+\author{سید محمد‌امین خدائی(۹۴۱۰۹۳۱۳)}
+
+
+\begin{document}
+\maketitle
+\section{سوال ۱}
+\subsection{الف}
+صحیح: 
+\begin{itemize}
+\item
+معمولا فاصله‌ بین دو بار تکرار یک کلمه عدد بزرگی نیست، و اگر این اعداد را در حافظه‌های بزرگی ذخیره کنیم،‌ مقدار بیشتری از حافظه بیهوده می‌ماند.
+\item
+پردازش‌گر‌ها برای فعالیت‌با حافظه‌های بزرگ‌تر (wordها) طراحی‌شده و بهینه‌سازی شده‌اند. لذا حجم حافظه بیشتر سرعت پردازش را بالا می‌برد.
+\end{itemize}
+\subsection{ب}
+غلط: هنگامی که واحد سند بزرگ‌تر می‌شود، برای مثال دو قسمت A و B را کنار هم به عنوان یک سند می‌بینیم: اگر a در A است و b در B، و وقتی کوئری ab می‌آید، گاهی این به معنی این‌است که سند AB مربوط به این کوئری هست و این recall را بالا می‌برد و گاه این به این معنی‌ست که AB مربوط به این کوئری نیست، و این accuracy را پایین می‌آورد.
+\subsection{ج}
+صحیح: در صورتی که مربوط بودن را مربوط بودن واقعی در نظر بگیریم، عمل‌وند and جواب‌ها را به شدت محدود کرده، و جواب‌هایی که برمی‌گرداند ارتباط بیشتری با کوئری دارند (افزایش accuracy) چون هر دو سری کلمه سمت چپ و راست and را حتما دارند. و از طرف دیگر مستنداتی که هر دو را ندارند ولی مثلا یکی را خیلی زیاد دارند و دیگری را با عبارات دیگری مطرح کرده‌اند بازیابی نکرده و recall را کاهش می‌دهد.
+\subsection{د}
+غلط: بر اساس اسلاید ۷م مجموعه اسلاید ۶م، 	حذف stopword‌ها در این مجموعه داده بسیار موثر‌تر از stemming بوده است. به نظرم دلیل آن بسیار پر تکرار بودن stopwordها است.
+
+\section{سوال ۲}
+\subsection{الف}
+به طور کلی هر چه طول گام‌های skippointer را بیشتر کنیم، احتمال اینکه این گام‌ها استفاده شوند کم‌تر می‌شود، ولی در صورت استفاده میزان سود ما بیشتر می‌شود. 
+\subsection{ب}
+۱ -> ۴ -> ۶ -> ۱۰ -> ۱۲ -> ۲۰ -> ۲۲ -> ۳۲ -> ۴۷ -> ۸۱ 
+\newline
+۳ -> ۱۰ -> ۳۲ ->‌ ۳۵ -> ۴۷ -> ۵۱ -> ۵۶ -> ۸۰
+\newline
+تعداد اعدادی که دیده شد: ۱۸
+\subsection{ج}
+حیر، زیرا وقتی تفاوتی در دو لیست می‌بینیم نباید آن را skip کنیم بلکه باید آن را جزو جواب بیاوریم و به همین دلیل پردازش همه داده‌ها لازم است.
+\subsection{د}
+می‌توانیم از پایان عدد k ام به شروع عدد
+\lr{k + i} 
+ام اشاره‌گری بگذاریم و کنار اشاره‌گر مجموع تفاوت‌ها عدد
+\lr{k + i} 
+ام با عدد kام را بنویسیم.
+\section{سوال ۴}
+$$ zarib = \frac{1}{1.61 - 1.25} = 2.8 $$
+\subsection{الف}
+$$ 25 \times 50000 = 1250000 Bytes = 1.25 GBytes$$
+\subsection{ب}
+$$ \frac{50000}{i^2} \times 2.8 = {140000}{i^2} $$
+\subsection{ج}
+$$ \frac{140000}{i^2} \times i = \frac{140000}{i}$$
+\subsection{د}
+$$ stringlen = 140000 \times \sum \frac{1}{i} = 140000 \times 2.27 = 317800$$
+$$ pointerlen = 50000 \times [\frac{\log _2 stringlen}{8}] = 50000 \times 3 = 150000 $$
+$$ memory = stringlen + pointerlen = 467800 Bytes = 467.8 MBytes $$
+\subsection{ه}
+$$ stringlen = D:stringlen + 50000 = 317800 + 50000 = 367800 $$
+$$ pointerlen = [\frac{50000}{8}] \times [\frac{\log _2 stringlen}{8}] = 6250 \times 3 = 18750 $$
+$$ memory = stringlen + pointerlen = 386550 Bytes = 386.55 MBytes $$
+
+\section{سوال ۵}
+\subsection{الف}
+دنباله فاصله‌ها به صورت بیتی:
+$$ 1001, 110, 11, 111011, 111 $$
+دنباله فاصله‌ها:
+$$ 9, 6, 3, 59, 7 $$
+دنباله‌ DocID ها: 
+$$ 9, 15, 18, 77, 84 $$
+\subsection{ب}
+$$ 0001001100001101000001110111011100001111 $$
+
+\section{سوال ۷}
+به طور کلی خیر. زیرا با زیاد کردن تعداد داکیومنتی که بازمی‌گردانیم، همواره recall را ثابت‌نگه داشته یا بیشتر می‌کنیم و precision را ثابت نگه می‌داریم و کاهش می‌دهیم. تنها حالتی که ممکن از در دو نقطه با هم برابر باشند این است که در بازه‌ای که با هم برابرند شرایط به گونه‌ای باشد که precision و recall در حالت ثبات خود باشند، ولی این قسمت اگر وجود داشته باشد هم قسمتی پیوسته است.
+\section{سوال ۸}
+\subsection{الف}
+$$ precision = \frac{6}{20} = 0.30 $$
+$$ recall = \frac{6}{8} = 0.75 $$
+\subsection{ب}
+$$ F = \frac{2PR}{P + R} = 0.43 $$
+\subsection{ج}
+$$ MAP = \frac{\frac{1}{1} + \frac{2}{6} + \frac{3}{10} + \frac{4}{12} + \frac{5}{19} + \frac{6}{20}}{6} = 0.42 $$
+\subsection{د}
+\begin{enumerate}
+\item
+$$ MAP = \frac{\frac{1}{1} + \frac{2}{6} + \frac{3}{10} + \frac{4}{12} + \frac{5}{19} + \frac{6}{20} + \frac{7}{21} + \frac{8}{22}}{8} = 0.4 $$
+\item
+$$ MAP = \frac{\frac{1}{1} + \frac{2}{6} + \frac{3}{10} + \frac{4}{12} + \frac{5}{19} + \frac{6}{20} + \frac{7}{9999} + \frac{8}{10000}}{8} = 0.32 $$
+
+
+\end{enumerate}
+\end{document}

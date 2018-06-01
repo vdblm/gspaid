@@ -101,3 +101,5 @@ folder.exe
 venv/
 
 db.sqlite3
+
+resources/
