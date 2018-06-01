@@ -11,6 +11,7 @@
 \usepackage{enumitem}
 \usepackage[normalem]{ulem}
 \usetikzlibrary{shapes, arrows}
+\settextfont{XB Zar}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -20,134 +21,12 @@
 }
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{xepersian}
 \title{
-GSPaid: Simple usecases
+موارد کاربردی
 }
 \author{سید محمد‌امین خدائی، علی عسگری، وحید بالازاده مرشت}
 \begin{document}
 \maketitle
-\section{Contact admin}
-\begin{itemize}
-\item
-Use Case: Contact admin
-\item
-Primary Actor: Anonymous User
-\item
-Scope: Administration System
-\item
-Level: User goal
-\item
-Brief: User fills a form of his name, email and massage and submit it so that it is delivered system admin
-\item
-Stakeholders:
-\begin{itemize}
-\item
-Anonymous user: he wants his massages to be sent to the system admin
-\end{itemize}
-\item
-Success Guarantees: user massage with his name and email addressed is delivered to admin
-\item
-Triggers:
-User opens contact us page.
-\end{itemize}
-
-\subsection{Basic flow}
-\begin{enumerate}
-\item
-System shows contact us form.
-\item
-User fills all fields of form with a correct email address format, and clicks on submit button.
-\item
-System shows a success label which means the massage has been sent.
-\end{enumerate}
-
-\subsection{Extensions}
-2-3.a:
-\begin{enumerate}
-\item
-User fills fields of form incompeletly or the email address with a wrong format, and clicks on submit.
-\item
-System shows a label meaning wrong input.
-\end{enumerate}
-
-
-\section{Sign Up}
-\begin{itemize}
-\item
-Use Case: Sign Up
-\item
-Primary Actor: Anonymous User
-\item
-Scope: Authorization System
-\item
-Level: User goal
-\item
-Brief: User fills a form of his first name, last name, username, phone number, email, password and password confirmation and tries to create new account for himself.
-\item
-Stakeholders:
-\begin{itemize}
-\item
-Anonymous user: he wants to create a new account with data he gives
-\end{itemize}
-\item
-\item
-Success Guarantees: System creates new user with data given.
-\item
-Triggers:
-User opens Sign up page.
-\end{itemize}
-\subsection{Basic flow}
-\begin{enumerate}
-\item
-System shows Sign up form.
-\item
-User fills all fields of form with correct email address format, password format, username format, same passwords, and new username and submits.
-\item
-System shows that new user with given data has been created
-\end{enumerate}
-
-\subsection{Extensions}
-2-3
-\begin{enumerate}[label=(\alph*)]
-\item
-Incomplete data:
-\begin{enumerate}[label=(\arabic*)]
-\item
-User fills fields of form incompeletly and submits
-\item
-System returns to signup page and shows a label meaning incomplete data.
-\end{enumerate}
-
-\item
-Incorrect input format:
-\begin{enumerate}[label=(\arabic*)]
-\item
-User fills fields of form completely with incorrect input formats and submits
-\item
-System returns to signup page and shows a label meaning correct format of each field with format condition beside it.
-\end{enumerate}
-
-\item
-Unmatched Passwords:
-\begin{enumerate}[label=(\arabic*)]
-\item
-User fills fields of form completely with different passwords
-\item
-System returns to signup page and shows a label meaning passwords are different.
-\end{enumerate}
-
-\item
-Username taken:
-\begin{enumerate}[label=(\arabic*)]
-\item
-User fills fields of form completely with correct input formats and taken username and submits
-\item
-System shows a label meaning that username is already taken.
-\end{enumerate}
-
-
-
-\end{enumerate}
-
-
+\section{hi}
 \end{document}
