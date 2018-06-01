@@ -101,3 +101,11 @@ folder.exe
 venv/
 
 db.sqlite3
+
+#
+*.aux
+*.out
+*.synctex.gz
+#
+resources/
+

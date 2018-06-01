@@ -1,0 +1,238 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{mathpazo}
+\usepackage[normalem]{ulem}
+\usetikzlibrary{shapes, arrows}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage[a4paper, margin=1.9cm]{geometry}
+\usepackage{xepersian}
+
+
+\title{موارد کاربردی سامانه}
+\settextfont{XB Zar}
+
+\begin{document}
+\maketitle
+\begin{itemize}
+\item \textbf{مورد کاربرد:}\\
+مشاهده ی صفحه معرفی موسسه
+\item \textbf{شناسه:}\\
+1
+\item \textbf{توضیح اجمالی:}\\
+صفحه معرفی موسسه به کاربر نمایش داده میشود. 
+\item \textbf{کنشگر اصلی:}\\
+مشتری
+\item \textbf{کنشگر فرعی:}\\
+ندارد
+\item \textbf{شرایط اولیه:}\\
+ندارد
+\item \textbf{روند اصلی:}\\
+\begin{enumerate}
+\item  این مورد کاربرد با درخواست کاربر برای مشاهدهی صفحه معرفی موسسه به کاربر شروع میشود
+\item سامانه صفحه معرفی موسسه را به کاربر نمایش میدهد
+\end{enumerate}
+\item \textbf{شرایط پایانی:}\\ 
+ندارد
+\item \textbf{روندهای جایگزین:}\\
+ندارد
+\end{itemize}
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+\begin{itemize}
+\item \textbf{مورد کاربرد:}\\
+مشاهده نرخ لحظه ای ارز 
+\item \textbf{شناسه:}\\
+2
+\item \textbf{توضیح اجمالی:}\\
+
+در صفحه اولیه (خانه) کاربر نرخ لحظه ای ارزها را مشاهده میکند. 
+\item \textbf{کنشگر اصلی:}\\
+مشتری
+\item \textbf{کنشگر فرعی:}\\
+ندارد
+\item \textbf{شرایط اولیه:}\\
+ندارد
+\item \textbf{روند اصلی:}\\
+\begin{enumerate}
+\item این مورد کاربرد با ورود کاربر به صفحه خانه شروع میشود
+\item سامانه نرخ لحظه ای ارزها (دلار و یورو) را بر حسب ریال نشان میدهد. 
+\end{enumerate}
+\item \textbf{شرایط پایانی:}\\ 
+ندارد
+\item \textbf{روندهای جایگزین:}\\
+ندارد
+\end{itemize}
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+\begin{itemize}
+\item \textbf{مورد کاربرد:}\\
+مشاهده صفحه قوانین و نرخ کارمزدها 
+\item \textbf{شناسه:}\\
+۳
+\item \textbf{توضیح اجمالی:}\\
+صفحه قوانین و نرخ کارمزدها به کاربر نشان داده میشود. 
+\item \textbf{کنشگر اصلی:}\\
+مشتری
+\item \textbf{کنشگر فرعی:}\\
+ندارد
+\item \textbf{شرایط اولیه:}\\
+ندارد
+\item \textbf{روند اصلی:}\\
+\begin{enumerate}
+\item  این مورد کاربرد با درخواست کاربر برای مشاهده صفحه قوانین و نرخ کارمزدها به کاربر شروع میشود.
+\item سامانه قوانین و نرخ کارمزدها را به کاربر نشان میدهد.
+\end{enumerate}
+\item \textbf{شرایط پایانی:}\\ 
+ندارد
+\item \textbf{روندهای جایگزین:}\\
+ندارد
+\end{itemize}
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+\begin{itemize}
+\item \textbf{مورد کاربرد:}\\
+انجام تبدیلات آزمایشی بین ارزی 
+\item \textbf{شناسه:}\\
+4
+\item \textbf{توضیح اجمالی:}\\
+در صفحه اولیه (خانه) کاربر میتواند نتیجه تبدیل ارزها را با توجه به نرخ ارز و کارمزد به طور آزمایشی را مشاهده میکند. 
+\item \textbf{کنشگر اصلی:}\\
+مشتری
+\item \textbf{کنشگر فرعی:}\\
+ندارد
+\item \textbf{شرایط اولیه:}\\
+ندارد
+\item \textbf{روند اصلی:}\\
+\begin{enumerate}
+\item این مورد کاربرد با ورود کاربر به صفحه خانه شروع میشود.
+\item مشتری ارز مبدا، مقصد و مقدار دلخواه برای تبدیل را وارد میکند
+\item در صورتی که مقدار ورودی صحیح باشد:
+\begin{enumerate}
+\item سامانه با توجه به نرخ لحظه ای ارز و مقدار کارمزد مقدار تبدیل شده صحیح را با توجه به ارز مقصد به مشتری نشان میدهد.  
+\end{enumerate}
+\item در غیر اینصورت:
+\begin{enumerate}
+\item سامانه پیغام خطایی مبنی بر نادرست بودن مقدار ورودی به مشتری میدهد
+\end{enumerate}
+\end{enumerate}
+\item \textbf{شرایط پایانی:}\\ 
+ندارد
+\item \textbf{روندهای جایگزین:}\\
+ندارد
+\end{itemize}
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+\begin{itemize}
+\item \textbf{مورد کاربرد:}\\
+تغییر و بروزرسانی صفحه قوانین و نرخ کارمزدها
+\item \textbf{شناسه:}\\
+5
+\item \textbf{توضیح اجمالی:}\\
+صفحه قوانین و نرخ کارمزدها بروز میشود.
+\item \textbf{کنشگر اصلی:}\\
+مدیر
+\item \textbf{کنشگر فرعی:}\\
+ندارد
+\item \textbf{شرایط اولیه:}\\
+مدیر وارد داشبورد ادمین شده باشد.
+\item \textbf{روند اصلی:}\\
+\begin{enumerate}
+\item  این مورد کاربرد با درخواست مدیر برای ایجاد تغییر در صفحه قوانین شروع میشود.
+\item سامانه صفحه  ایجاد تغییر قوانین را به مدیر نشان میدهد.
+\item مدیر نرخ کارمزدها، کف و سقف مبلغ تراکنشها و توضیحات مربوط به قوانین سایت را تغییر میدهد.
+\item پیغام بروزرسانی موفق قوانین و نرخ کارمزدها به مدیر نشان داده میشود.
+\end{enumerate}
+\item \textbf{شرایط پایانی:}\\ 
+نرخ کارمزدها یا قوانین یا سقف و کف مبلغ تراکنشها تغییر میکند و صفحه قوانین بروز میشود.
+\item \textbf{روندهای جایگزین:}\\
+ندارد
+\end{itemize}
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+\begin{itemize}
+\item \textbf{مورد کاربرد:}\\
+ارسال نوتفیکیشن
+\item \textbf{شناسه:}\\
+6
+\item \textbf{توضیح اجمالی:}\\
+برای اطلاع رسانی مشتری ها نوتیفیکیشن با استفاده از رایانامه یا پیامک ارسال میشود.
+\item \textbf{کنشگر اصلی:}\\
+کارمند
+\item \textbf{کنشگر فرعی:}\\
+ندارد
+\item \textbf{شرایط اولیه:}\\
+کارمند وارد داشبورد ادمین شده باشد.؟؟
+\item \textbf{روند اصلی:}\\
+\begin{enumerate}
+\item در صورتی که مورد کاربردی با درخواست مدیر در «ایجاد تراکنش معتبر دلخواه» شروع شود: 
+\begin{enumerate}
+\item پیغام نوتیفیکیشن برابر با پیغام وارد شده توسط مدیر میشود.
+\item تمام مشتری ها به عنوان مشتری مقصد انتخاب میشوند.
+\end{enumerate}
+\item در صورتی که مورد کاربردی با درخواست کارمند در «تایید تراکنش» شروع شود
+\begin{enumerate}
+\item پیغام نوتیفیکیشن برابر با پیغام وارد شده توسط کارمند میشود.
+\item مشتری مقصد برابر با مشتری در مورد کاربردی «تایید تراکنش» میشود.
+\end{enumerate}
+\item با توجه به شیوه اطلاع رسانی ثبت شده توسط هر کدام از مشتری های مقصد پیغام مربوطه به آنها ارسال میشود.
+\end{enumerate}
+
+\item \textbf{شرایط پایانی:}\\ 
+هر کدام از مشتریهای مقصد پیغام را از طریق روش اطلاع رسانی مشخص شده دریافت کند.
+\item \textbf{روندهای جایگزین:}\\
+ندارد
+\end{itemize}
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+\begin{itemize}
+\item \textbf{مورد کاربرد:}\\
+ایجاد تراکنش معتبر دلخواه
+\item \textbf{شناسه:}\\
+7
+\item \textbf{توضیح اجمالی:}\\
+یک تراکنش دلخواه توسط مدیر تعریف میشود.
+\item \textbf{کنشگر اصلی:}\\
+مدیر
+\item \textbf{کنشگر فرعی:}\\
+ندارد
+\item \textbf{شرایط اولیه:}\\
+مدیر وارد داشبورد ادمین شده باشد.
+\item \textbf{روند اصلی:}\\
+\begin{enumerate}
+\item  این مورد کاربرد با درخواست مدیر برای ایجاد یک تراکنش جدید شروع میشود.
+\item سامانه صفحه ایجاد تراکنش جدید را به مدیر نشان میدهد.
+\item مدیر عنوان تراکنش، مقدار هزینه آن، واحد پولی و اطلاعات موردنیاز را وارد میکند.
+\item در صورتی که این تراکنش از قبل در سامانه باشد:
+\begin{enumerate}
+\item سامانه پیغام خطا میدهد و به قسمت ۳ برمیگردد. 
+\end{enumerate}
+
+\item در غیراینصورت	:
+\begin{enumerate}
+\item پیغام ایجاد موفق تراکنش به مدیر نشان داده میشود.
+\end{enumerate}
+\item  درصورتی که مدیر گزینه ارسال نوتیفیکیشن را انتخاب کند:
+\begin{enumerate}
+\item مدیر پیام نوتیفیکیشن را وارد کرده و تایید میکند.
+\item مورد کابردی «ارسال نوتیفیکیشن» انجام میشود.
+\end{enumerate}
+\item سامانه پیغام ایجاد موفق تراکنش را نشان میدهد.
+\end{enumerate}
+
+\item \textbf{شرایط پایانی:}\\ 
+در قسمت تراکنشهای مربوط به کاربران، تراکنش ایجاد شده اضافه شود.
+\item \textbf{روندهای جایگزین:}\\
+ندارد
+\end{itemize}
+
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+\end{document}

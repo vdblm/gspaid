@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'financial',
     'workflow',
     'management',
+    'misc',
 ]
 
 MIDDLEWARE = [
