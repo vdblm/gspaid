@@ -16,9 +16,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from authorization import urls as authorization_urls
+from management import urls as management_urls
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^authorization/', include(authorization_urls)),
+    url(r'^management/', include(management_urls)),
 ]
