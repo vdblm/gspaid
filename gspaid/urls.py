@@ -30,5 +30,4 @@ urlpatterns = [
     url(r'^management/', include(management_urls)),
     url(r'^financial/', include(financial_urls)),
     url(r'^workflow/', include(workflow_urls)),
-    url(r'^management/', include(management_urls)),
 ]
