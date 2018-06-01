@@ -99,3 +99,5 @@ folder.exe
 .idea/
 
 venv/
+
+db.sqlite3
