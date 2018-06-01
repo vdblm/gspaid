@@ -2,24 +2,25 @@ import re
 import time
 import unittest
 
+from django.test import LiveServerTestCase
 from selenium import webdriver
 
 
-class ContactAdminTest(unittest.TestCase):
+class ContactAdminTest(LiveServerTestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome('C:\\Users\\vahid\\Desktop\\chromedriver.exe')
-        self.wireframe_host_name = "file:///D:/Sharif/Term/SAD/gspaid/documents/design/wireframe"
+        self.selenium = webdriver.Firefox()
+        self.wireframe_host_name = "http://127.0.0.1:8000"
 
     def wireframe_address(self, path):
         return self.wireframe_host_name + path
 
     def help_contact_admin(self, name, email, description):
-        driver = self.driver
-        driver.get(self.wireframe_address("/general/home.html"))
+        driver = self.selenium
+        driver.get(self.wireframe_address("/management/contact_admin"))
         time.sleep(1)
-        name_field = driver.find_element_by_id("name")
-        email_field = driver.find_element_by_id("email")
-        description_field = driver.find_element_by_id("description")
+        name_field = driver.find_element_by_name("name")
+        email_field = driver.find_element_by_name("email")
+        description_field = driver.find_element_by_name("message")
 
         self.assertIsNotNone(name_field)
         self.assertIsNotNone(email_field)
@@ -33,12 +34,18 @@ class ContactAdminTest(unittest.TestCase):
         self.assertIsNotNone(submit_attempt)
 
         submit_attempt.submit()
+        time.sleep(1)
 
         email_pattern = "[^@]+@[^@]+\.[^@]+"
 
-        if (not re.match(email_pattern, email)) or len(name) is 0 or len(description) is 0:
-            self.assertIn("Wrong Email Format or Empty Field", driver.page_source)
-        self.assertIn("Your Comment Submitted", driver.page_source)
+        if not re.match(email_pattern, email):
+            self.assertIn("Enter a valid email", driver.page_source)
+        elif len(name) == 0:
+            self.assertIn("This field is required", driver.page_source)
+        elif len(description) == 0:
+            self.assertIn("This field is required", driver.page_source)
+        else:
+            self.assertIn("Sent message to admin.", driver.page_source)
         driver.close()
 
     def test_contact_admin_wrong_email(self):
@@ -52,3 +59,7 @@ class ContactAdminTest(unittest.TestCase):
 
     def test_contact_admin_base_scenario(self):
         self.help_contact_admin(email="vahid@gmail.com", name="vahid", description="hello")
+
+    def tearDown(self):
+        super().tearDown()
+        self.selenium.quit()
