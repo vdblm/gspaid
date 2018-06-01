@@ -1,0 +1,156 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{mathpazo}
+\usepackage[normalem]{ulem}
+\usetikzlibrary{shapes, arrows}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage[a4paper, margin=1.9cm]{geometry}
+\usepackage{xepersian}
+
+
+\title{موارد کاربردی سامانه}
+\settextfont{XB Zar}
+
+\begin{document}
+\maketitle
+\begin{itemize}
+\item \textbf{مورد کاربرد:}\\
+مشاهده ی صفحه معرفی موسسه
+\item \textbf{شناسه:}\\
+1
+\item \textbf{توضیح اجمالی:}\\
+صفحه معرفی موسسه به کاربر نمایش داده میشود. 
+\item \textbf{کنشگر اصلی:}\\
+مشتری
+\item \textbf{کنشگر فرعی:}\\
+ندارد
+\item \textbf{شرایط اولیه:}\\
+ندارد
+\item \textbf{روند اصلی:}\\
+\begin{enumerate}
+\item  این مورد کاربرد با درخواست کاربر برای مشاهدهی صفحه معرفی موسسه به کاربر شروع میشود
+\item سامانه صفحه معرفی موسسه را به کاربر نمایش میدهد
+\end{enumerate}
+\item \textbf{شرایط پایانی:}\\ 
+ندارد
+\item \textbf{روندهای جایگزین:}\\
+ندارد
+\end{itemize}
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+\begin{itemize}
+\item \textbf{مورد کاربرد:}\\
+مشاهده نرخ لحظه ای ارز 
+\item \textbf{شناسه:}\\
+2
+\item \textbf{توضیح اجمالی:}\\
+
+در صفحه اولیه (خانه) کاربر نرخ لحظه ای ارزها را مشاهده میکند. 
+\item \textbf{کنشگر اصلی:}\\
+مشتری
+\item \textbf{کنشگر فرعی:}\\
+ندارد
+\item \textbf{شرایط اولیه:}\\
+ندارد
+\item \textbf{روند اصلی:}\\
+\begin{enumerate}
+\item این مورد کاربرد با ورود کاربر به صفحه خانه شروع میشود
+\item سامانه نرخ لحظه ای ارزها (دلار و یورو) را بر حسب ریال نشان میدهد. 
+\end{enumerate}
+\item \textbf{شرایط پایانی:}\\ 
+ندارد
+\item \textbf{روندهای جایگزین:}\\
+ندارد
+\end{itemize}
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+\begin{itemize}
+\item \textbf{مورد کاربرد:}\\
+مشاهده صفحه قوانین و نرخ کارمزدها 
+\item \textbf{شناسه:}\\
+۳
+\item \textbf{توضیح اجمالی:}\\
+صفحه قوانین و نرخ کارمزدها به کاربر نشان داده میشود. 
+\item \textbf{کنشگر اصلی:}\\
+مشتری
+\item \textbf{کنشگر فرعی:}\\
+ندارد
+\item \textbf{شرایط اولیه:}\\
+ندارد
+\item \textbf{روند اصلی:}\\
+\begin{enumerate}
+\item  این مورد کاربرد با درخواست کاربر برای مشاهده صفحه قوانین و نرخ کارمزدها به کاربر شروع میشود.
+\item سامانه قوانین و نرخ کارمزدها را به کاربر نشان میدهد.
+\end{enumerate}
+\item \textbf{شرایط پایانی:}\\ 
+ندارد
+\item \textbf{روندهای جایگزین:}\\
+ندارد
+\end{itemize}
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+\begin{itemize}
+\item \textbf{مورد کاربرد:}\\
+انجام تبدیلات آزمایشی بین ارزی 
+\item \textbf{شناسه:}\\
+4
+\item \textbf{توضیح اجمالی:}\\
+در صفحه اولیه (خانه) کاربر میتواند نتیجه تبدیل ارزها را با توجه به نرخ ارز و کارمزد به طور آزمایشی را مشاهده میکند. 
+\item \textbf{کنشگر اصلی:}\\
+مشتری
+\item \textbf{کنشگر فرعی:}\\
+ندارد
+\item \textbf{شرایط اولیه:}\\
+ندارد
+\item \textbf{روند اصلی:}\\
+\begin{enumerate}
+\item این مورد کاربرد با ورود کاربر به صفحه خانه شروع میشود.
+\item مشتری ارز مبدا، مقصد و مقدار دلخواه برای تبدیل را وارد میکند
+\item در صورتی که مقدار ورودی صحیح باشد:
+\begin{enumerate}
+\item سامانه با توجه به نرخ لحظه ای ارز و مقدار کارمزد مقدار تبدیل شده صحیح را با توجه به ارز مقصد به مشتری نشان میدهد.  
+\end{enumerate}
+\item در غیر اینصورت:
+\begin{enumerate}
+\item سامانه پیغام خطایی مبنی بر نادرست بودن مقدار ورودی به مشتری میدهد
+\end{enumerate}
+\end{enumerate}
+\item \textbf{شرایط پایانی:}\\ 
+ندارد
+\item \textbf{روندهای جایگزین:}\\
+ندارد
+\end{itemize}
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+\begin{itemize}
+\item \textbf{مورد کاربرد:}\\
+مشاهده ی صفحه معرفی موسسه
+\item \textbf{شناسه:}\\
+1
+\item \textbf{توضیح اجمالی:}\\
+صفحه معرفی موسسه به کاربر نمایش داده میشود. 
+\item \textbf{کنشگر اصلی:}\\
+مشتری
+\item \textbf{کنشگر فرعی:}\\
+ندارد
+\item \textbf{شرایط اولیه:}\\
+ندارد
+\item \textbf{روند اصلی:}\\
+\begin{enumerate}
+\item  این مورد کاربرد با درخواست کاربر برای مشاهدهی صفحه معرفی موسسه به کاربر شروع میشود
+\item سامانه صفحه معرفی موسسه را به کاربر نمایش میدهد
+\end{enumerate}
+\item \textbf{شرایط پایانی:}\\ 
+ندارد
+\item \textbf{روندهای جایگزین:}\\
+ندارد
+\end{itemize}
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+\end{document}
