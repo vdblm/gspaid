@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def live_currency(request):
+    return render(request, "misc/home.html")

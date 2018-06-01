@@ -1,27 +1,22 @@
-import unittest
-
-from django.test import TestCase, LiveServerTestCase
+from django.test import LiveServerTestCase
 from selenium import webdriver
-from django.conf import settings
-
-# Create your tests here.
 
 
-class AboutUsTest(LiveServerTestCase):
+class Tests(LiveServerTestCase):
     def setUp(self):
         self.selenium = webdriver.Chrome()
-        super(AboutUsTest, self).setUp()
-        # self.wireframe_host_name = "/media/smakh/Study/Studing/University/6/Analyze/gspaid/misc/templates/misc"
-    #
-    # def wireframe_address(self, path):
-    #     self.wireframe_host_name + path
+        super(Tests, self).setUp()
+
+    def tearDown(self):
+        self.selenium.quit()
+        super(Tests, self).tearDown()
 
     def test_about_us(self):
         selenium = self.selenium
         selenium.get('http://127.0.0.1:8000/misc/about_us')
-
         self.assertTrue('About Us' in self.selenium.page_source)
 
-    def tearDown(self):
-        self.selenium.quit()
-        super(AboutUsTest, self).tearDown()
+    def test_rules(self):
+        selenium = self.selenium
+        selenium.get('http://127.0.0.1:8000/misc/rules')
+        self.assertTrue('Rules' in self.selenium.page_source)
