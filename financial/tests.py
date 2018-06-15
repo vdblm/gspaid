@@ -1,17 +1,13 @@
-from django.test import LiveServerTestCase
-from selenium import webdriver
+from gspaid.abstract_test import SeleniumTestCase
 
 
-class Tests(LiveServerTestCase):
+class Tests(SeleniumTestCase):
     def setUp(self):
-        self.selenium = webdriver.Chrome()
-        super(Tests, self).setUp()
+        super().setUp()
 
     def tearDown(self):
-        self.selenium.quit()
-        super(Tests, self).tearDown()
+        super().tearDown()
 
-    def test_about_us(self):
-        selenium = self.selenium
-        selenium.get('http://127.0.0.1:8000/financial/live_currency')
-        self.assertTrue('Live Currency' in self.selenium.page_source)
+    def test_live_currency(self):
+        self.open("/financial/live_currency")
+        self.assertTrue('Live Currency' in self.wd.page_source)
