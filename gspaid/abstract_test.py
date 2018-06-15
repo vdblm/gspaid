@@ -8,8 +8,8 @@ class SeleniumTestCase(LiveServerTestCase):
     clients and logging in profiles.
     """
     def setUp(self):
-        self.wd = webdriver.Chrome()
         super(SeleniumTestCase, self).setUp()
+        self.wd = webdriver.Chrome()
 
     def tearDown(self):
         self.wd.quit()

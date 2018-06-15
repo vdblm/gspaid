@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
 
+from workflow import views
 
 urlpatterns = [
-    # url(r'^admin/', admin.site.urls),
+    url(r'^dashboard/', views.costumer_dashboard, name='dashboard'),
 ]
