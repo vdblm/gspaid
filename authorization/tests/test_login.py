@@ -21,10 +21,12 @@ class Tests(SeleniumTestCase):
     def tearDown(self):
         super().tearDown()
 
-    def help_login(self, username, password):
-        self.open("/authorization/login")
-        wd = self.wd
+    @staticmethod
+    def help_login(selenium_test_case, username, password):
+        selenium_test_case.open("/authorization/login")
         time.sleep(1)
+
+        wd = selenium_test_case.wd
 
         username_field = wd.find_element_by_name("username")
         password_field = wd.find_element_by_name("password")
@@ -33,21 +35,22 @@ class Tests(SeleniumTestCase):
         password_field.send_keys(password)
 
         submit_attempt = wd.find_element_by_xpath("//*[@type='submit']")
-        self.assertIsNotNone(submit_attempt)
+        if submit_attempt is None:
+            raise Exception
 
         submit_attempt.submit()
         time.sleep(1)
 
     @override_settings(DEBUG=True)
     def test_login_successful(self):
-        self.help_login(username="alto", password="asdfghjkl;")
         wd = self.wd
+        self.help_login(self, username="alto", password="asdfghjkl;")
 
         self.assertTrue("Dashboard" in self.wd.page_source)
 
     @override_settings(DEBUG=True)
     def test_login_wrong_username_password(self):
-        self.help_login(username="amin", password="qwertyuiop[]")
         wd = self.wd
+        self.help_login(self, username="amin", password="qwertyuiop[]")
 
         self.assertTrue("Please enter a correct username and password" in self.wd.page_source)

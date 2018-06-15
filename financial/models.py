@@ -6,7 +6,7 @@ import json
 
 
 class Currency(models.Model):
-    name = models.CharField(max_length=128, blank=False, null=False)
+    name = models.CharField(max_length=128, blank=False, null=False, unique=True)
 
     @property
     def ratio(self):
