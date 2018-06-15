@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'workflow',
     'management',
     'misc',
+
+    'solo',
 ]
 
 MIDDLEWARE = [
