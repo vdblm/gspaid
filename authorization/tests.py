@@ -1,17 +1,13 @@
-from django.test import LiveServerTestCase
-from selenium import webdriver
+from gspaid.abstract_test import SeleniumTestCase
 
 
-class Tests(LiveServerTestCase):
+class Tests(SeleniumTestCase):
     def setUp(self):
-        self.selenium = webdriver.Chrome()
-        super(Tests, self).setUp()
+        super().setUp()
 
     def tearDown(self):
-        self.selenium.quit()
-        super(Tests, self).tearDown()
+        super().tearDown()
 
     # def test_about_us(self):
-    #     selenium = self.selenium
-    #     selenium.get('http://127.0.0.1:8000/misc/about_us')
-    #     self.assertTrue('About Us' in self.selenium.page_source)
+    #     self.open("/misc/about_us")
+    #     self.assertTrue('About Us' in self.wd.page_source)
