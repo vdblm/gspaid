@@ -20,3 +20,8 @@ def contact_admin(request):
             'form': form
         }
     )
+
+
+def dashboard(request):
+    return render(request, "management/management_dashboard.html")
+
