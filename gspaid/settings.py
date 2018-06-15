@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'misc',
 
     'solo',
+    'registration',
 ]
 
 MIDDLEWARE = [
