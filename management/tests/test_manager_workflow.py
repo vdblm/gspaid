@@ -134,15 +134,15 @@ class ManagerWorkFlowTests(SeleniumTestCase):
         # login the admin user
         AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
 
-        requests_page_link = self.web_driver.find_element_by_link_text("Users")
+        users_page_link = self.web_driver.find_element_by_link_text("Users")
 
-        requests_page_link.click()
+        users_page_link.click()
 
-        # self.assertTrue('Users' in self.web_driver.page_source, msg='The recently added user is not shown in '
-        #                                                             'the users page for the admin')
+        self.assertTrue('Users' in self.web_driver.page_source, msg='The recently added user is not shown in '
+                                                                    'the users page for the admin')
         # we created a request for the customer user on setup.
         # assert that his or her name is shown in the requests page
-        # self.assertTrue(self.customer_user.username in self.web_driver.page_source)
+        self.assertTrue(self.customer_user.username in self.web_driver.page_source)
 
     def test_view_all_users(self):
         self.go_to_users()
@@ -164,3 +164,26 @@ class ManagerWorkFlowTests(SeleniumTestCase):
 
         self.assertTrue('User banned successfully!' in self.web_driver.page_source)
 
+    def increase_organization_account(self, currency):
+        # login the admin user
+        AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
+
+        charge_page_link = self.web_driver.find_element_by_link_text("Charge")
+        charge_page_link.click()
+        time.sleep(1)
+
+        amount_element = self.web_driver.find_element_by_id('amount')
+        currency_element = self.web_driver.find_element_by_id('currency')
+
+        amount_element.send_keys('1000')
+        currency_element.send_keys(currency)
+        currency_element.submit()
+        time.sleep(1)
+
+        self.assertTrue('Account got charged successfully!' in self.web_driver.page_source)
+
+    def test_increase_organization_dollar_account(self):
+        self.increase_organization_account('$')
+
+    def test_increase_organization_rial_account(self):
+        self.increase_organization_account('Rial')
