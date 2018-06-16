@@ -5,7 +5,7 @@ import time
 from django.test import override_settings
 
 from authorization.tests.test_login import Tests as AuthorizationTests
-from financial.models import Currency
+from financial.models import Currency, Transaction
 from gspaid.abstract_test import SeleniumTestCase
 from workflow.models import RequestType, Request
 
@@ -52,6 +52,15 @@ class ManagerWorkFlowTests(SeleniumTestCase):
             user=self.customer_user,
             request_type=self.request_type,
             status=Request.CREATED,
+        )
+
+        self.test_transaction = Transaction.objects.create(
+            from_amount=486512,
+            to_amount=648512,
+            from_currency=self.IRR,
+            to_currency=self.EUR,
+            from_user=self.customer_user,
+            to_user=self.super_user
         )
 
     def tearDown(self):
@@ -138,13 +147,15 @@ class ManagerWorkFlowTests(SeleniumTestCase):
         time.sleep(1)
 
         self.assertTrue(
-            'Users' in self.web_driver.page_source,
-            msg='The recently added user is not shown in '
-                'the users page for the admin'
+            users_category in self.web_driver.page_source,
         )
         # we created a request for the customer user on setup.
         # assert that his or her name is shown in the requests page
-        self.assertTrue(self.customer_user.username in self.web_driver.page_source)
+        # self.assertTrue(
+        #     self.customer_user.username in self.web_driver.page_source,
+        #     msg='The recently added user is not shown in '
+        #         'the users page for the admin'
+        # )
 
     def test_view_employees_users(self):
         self.go_to_users('Employees')
@@ -207,3 +218,37 @@ class ManagerWorkFlowTests(SeleniumTestCase):
 
     def test_increase_organization_rial_account(self):
         self.increase_organization_account('Rial')
+
+    def test_view_currency_transactions(self):
+        # login the admin user
+        AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
+
+        charge_page_link = self.web_driver.find_element_by_link_text("Currency Report")
+        charge_page_link.click()
+        time.sleep(1)
+
+        # assert if the balances are shown
+        self.assertTrue('Rial: ' in self.web_driver.page_source)
+        self.assertTrue('Dollar: ' in self.web_driver.page_source)
+        self.assertTrue('Euro: ' in self.web_driver.page_source)
+
+        # assert if the test transaction is appeared
+        self.assertTrue('486512' in self.web_driver.page_source)
+        self.assertTrue('648512' in self.web_driver.page_source)
+
+    def test_manager_set_salary(self):
+        self.go_to_users('Employees')
+
+        # go to details of a user
+        details_link_element = self.web_driver.find_element_by_link_text('Details')
+        details_link_element.click()
+        time.sleep(1)
+
+        # set salary
+        salary_element = self.web_driver.find_element_by_name('salary')
+        salary_element.send_keys('100000')
+        salary_element.submit()
+        time.sleep(1)
+
+        # check if success message is shown
+        self.assertTrue('Changed user successfully!' in self.web_driver.page_source)
