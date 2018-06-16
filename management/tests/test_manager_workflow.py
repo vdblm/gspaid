@@ -171,7 +171,7 @@ class ManagerWorkFlowTests(SeleniumTestCase):
         self.web_driver.find_element_by_id('email')
 
     def test_view_customers_users(self):
-        self.go_to_users('Costumers')
+        self.go_to_users('Customers')
 
         self.web_driver.find_element_by_link_text('Details').click()
 
