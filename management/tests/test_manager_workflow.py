@@ -53,6 +53,7 @@ class ManagerWorkFlowTests(SeleniumTestCase):
             request_type=self.request_type,
             status=Request.CREATED,
         )
+
         self.test_transaction = Transaction.objects.create(
             from_amount=486512,
             to_amount=648512,

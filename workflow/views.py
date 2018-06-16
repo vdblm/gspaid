@@ -11,3 +11,7 @@ def employee_dashboard(request):
 
 def requests(request):
     return render(request, 'workflow/requests_history.html')
+
+
+def costumer_new_request(request):
+    return render(request, "workflow/new_request.html")
