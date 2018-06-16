@@ -120,12 +120,13 @@ class ManagerWorkFlowTests(SeleniumTestCase):
 
         requests_page_link.click()
 
-        self.assertTrue('Requests' in self.web_driver.page_source, msg='The recently added request is not shown in '
-                                                                       'the requests page for the admin')
-
         # we created a request for the customer user on setup.
         # assert that his or her name is shown in the requests page
-        self.assertTrue(self.customer_user.username in self.web_driver.page_source)
+        self.assertTrue(
+            self.customer_user.username in self.web_driver.page_source,
+            msg='The recently added request is not shown in '
+                'the requests page for the admin'
+        )
 
         self.web_driver.find_element_by_link_text('Details').click()
 
