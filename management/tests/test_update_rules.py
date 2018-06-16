@@ -21,43 +21,24 @@ class Tests(SeleniumTestCase):
             email="altostratous@gspaid.com"
         )
 
-
     def tearDown(self):
         super().tearDown()
 
     @override_settings(DEBUG=True)
-    def help_create_service(self, title, currency_name, amount, extra_info):
+    def help_create_service(self, max_transaction_per_day, min_transaction_per_day):
         AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
         web_driver = self.web_driver
         self.assertTrue("Dashboard" in web_driver.page_source)
-        web_driver.find_element_by_link_text("Create New Request Type").click()
+        web_driver.find_element_by_link_text("Settings").click()
 
-        title_element = web_driver.find_element_by_id('title')
-        amount_element = web_driver.find_element_by_id('amount')
-        currency_element = web_driver.find_element_by_id('currency')
-        extra_info_element = web_driver.find_element_by_id('extra-info')
+        max_transaction= web_driver.find_element_by_id('max_transaction_per_day')
+        min_transaction = web_driver.find_element_by_id('min_transaction_per_day')
 
-        title_element.send_keys(title)
-        amount_element.send_keys(amount)
-        currency_element.send_keys(currency_name)
-        extra_info_element.send_keys(extra_info)
-
-        extra_info_element.submit()
+        max_transaction.send_keys(max_transaction_per_day)
+        min_transaction.send_keys(min_transaction_per_day)
+        min_transaction.submit()
 
     @override_settings(DEBUG=True)
     def test_create_service_new_service_successful(self):
-        self.help_create_service(title="hi", currency_name="IRR", amount=98765, extra_info="It is newwwww")
-        self.assertTrue('Created request type successfully' in self.web_driver.page_source)
-        notification_link = self.web_driver.find_element_by_link_text('Send Notification')
-        notification_link.click()
-        self.assertTrue('Notification' in self.web_driver.page_source)
-
-    @override_settings(DEBUG=True)
-    def test_create_service_new_service_duplicate_name(self):
-        self.help_create_service(
-            title="duplicate_name",
-            currency_name="IRR",
-            amount=123456,
-            extra_info="You wanna buy it anyway",
-        )
-        self.assertTrue('duplicate' in self.web_driver.page_source)
+        self.help_create_service(max_transaction_per_day=1000, min_transaction_per_day=50)
+        self.assertTrue('Settings Changed Successfully!' in self.web_driver.page_source)
