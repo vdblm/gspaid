@@ -9,3 +9,10 @@ def live_currency(request):
 def currency_converter(request):
     return views.about_us(request)
 
+
+def online_wallet(request):
+    return views.render(request, 'financial/online_wallet.html')
+
+
+def charged(request):
+    return views.render(request, 'financial/charged.html')

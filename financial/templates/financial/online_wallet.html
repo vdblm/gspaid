@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles.css">
+    <title>online wallet</title>
+</head>
+<body>
+<form method="get" action="online_wallet.html">
+    <label for="Rial">Rial: </label>
+    <input type="number" id="Rial" readonly="readonly" value="100000000">
+
+    <label for="Doller">Doller: </label>
+    <input type="number" id="Doller" readonly="readonly" value="100000000">
+
+    <label for="Euro">Euro: </label>
+    <input type="number" id="Euro" readonly="readonly" value="100000000">
+</form>
+
+<br>
+
+<form method="get" action="{% url 'financial:charged' %}">
+    <label for="amount">Amount to charge:</label>
+    <input type="number" id="amount">
+    <label>Rials</label>
+    <input type="submit" value="Charge">
+</form>
+
+<br>
+
+<form method="get" action="online_wallet.html">
+    <label for="amount2">Amount to change:</label>
+    <input type="number" id="amount2">
+    <select id="currency" value="$">
+        <option value="$">$</option>
+        <option value="Rial">Rial</option>
+        <option value="Euro">Euro</option>
+    </select>
+    <label for="amount3">Amount you get:</label>
+    <input type="number" readonly="readonly" id="amount3" value="48000">
+    <select id="currency3" value="$">
+        <option value="$">$</option>
+        <option value="Rial">Rial</option>
+        <option value="Euro">Euro</option>
+    </select>
+    <input type="submit" value="update change info">
+    <input type="submit" value="Change!">
+</form>
+
+</body>
+</html>
