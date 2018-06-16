@@ -15,7 +15,7 @@ class ExchangeRequest(RequestTypeBase, SingletonModel):
     pass
 
 
-class RequestType(models.Model):
+class RequestType(RequestTypeBase):
     currency = models.ForeignKey(Currency)
     amount = models.DecimalField(max_digits=128, decimal_places=64)
     information = models.TextField()
