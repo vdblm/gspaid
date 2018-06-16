@@ -10,4 +10,4 @@ class Tests(SeleniumTestCase):
 
     def test_live_currency(self):
         self.open("/financial/live_currency")
-        self.assertTrue('Live Currency' in self.wd.page_source)
+        self.assertTrue('Live Currency' in self.web_driver.page_source)

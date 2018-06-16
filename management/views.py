@@ -25,3 +25,6 @@ def contact_admin(request):
 def dashboard(request):
     return render(request, "management/management_dashboard.html")
 
+
+def add_request_type(request):
+    return render(request, 'management/new_request_type.html')

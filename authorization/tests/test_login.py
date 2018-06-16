@@ -26,15 +26,15 @@ class Tests(SeleniumTestCase):
         selenium_test_case.open("/authorization/login")
         time.sleep(1)
 
-        wd = selenium_test_case.wd
+        web_driver = selenium_test_case.web_driver
 
-        username_field = wd.find_element_by_name("username")
-        password_field = wd.find_element_by_name("password")
+        username_field = web_driver.find_element_by_name("username")
+        password_field = web_driver.find_element_by_name("password")
 
         username_field.send_keys(username)
         password_field.send_keys(password)
 
-        submit_attempt = wd.find_element_by_xpath("//*[@type='submit']")
+        submit_attempt = web_driver.find_element_by_xpath("//*[@type='submit']")
         if submit_attempt is None:
             raise Exception
 
@@ -43,14 +43,10 @@ class Tests(SeleniumTestCase):
 
     @override_settings(DEBUG=True)
     def test_login_successful(self):
-        wd = self.wd
         self.help_login(self, username="alto", password="asdfghjkl;")
-
-        self.assertTrue("Dashboard" in self.wd.page_source)
+        self.assertTrue("Dashboard" in self.web_driver.page_source)
 
     @override_settings(DEBUG=True)
     def test_login_wrong_username_password(self):
-        wd = self.wd
         self.help_login(self, username="amin", password="qwertyuiop[]")
-
-        self.assertTrue("Please enter a correct username and password" in self.wd.page_source)
+        self.assertTrue("Please enter a correct username and password" in self.web_driver.page_source)

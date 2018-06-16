@@ -34,12 +34,25 @@ class Tests(SeleniumTestCase):
 
     @override_settings(DEBUG=True)
     def help_create_service(self, currency_name, amount, information):
-        wd = self.wd
         AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
+        self.assertTrue("Dashboard" in self.web_driver.page_source)
+        self.open('/management/add_request_type')
+        title_element = self.web_driver.find_element_by_id('title')
+        amount_element = self.web_driver.find_element_by_id('amount')
+        currency_element = self.web_driver.find_element_by_id('currency')
+        extra_info_element = self.web_driver.find_element_by_id('extra-info')
+
+        title_element.send_keys('toefl')
+        amount_element.send_keys('10000')
+        currency_element.send_keys('EUR')
+        extra_info_element.send_keys('My fathers name is Saljough')
+
+        extra_info_element.submit()
+
+        self.assertTrue('Created request type successfully' in self.web_driver.page_source)
 
     @override_settings(DEBUG=True)
     def test_create_service_new_service(self):
         self.help_create_service("IRR", 98765, "Not good, do not use it")
-        wd = self.wd
 
-        self.assertTrue("Dashboard" in self.wd.page_source)
+
