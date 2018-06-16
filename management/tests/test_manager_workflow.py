@@ -130,7 +130,7 @@ class ManagerWorkFlowTests(SeleniumTestCase):
         self.web_driver.find_element_by_id('extra-data')
         self.web_driver.find_element_by_link_text('Zipped files')
 
-    def test_view_all_users(self):
+    def go_to_users(self):
         # login the admin user
         AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
 
@@ -140,10 +140,12 @@ class ManagerWorkFlowTests(SeleniumTestCase):
 
         # self.assertTrue('Users' in self.web_driver.page_source, msg='The recently added user is not shown in '
         #                                                             'the users page for the admin')
-
         # we created a request for the customer user on setup.
         # assert that his or her name is shown in the requests page
-        self.assertTrue(self.customer_user.username in self.web_driver.page_source)
+        # self.assertTrue(self.customer_user.username in self.web_driver.page_source)
+
+    def test_view_all_users(self):
+        self.go_to_users()
 
         self.web_driver.find_element_by_link_text('Details').click()
 
@@ -154,3 +156,11 @@ class ManagerWorkFlowTests(SeleniumTestCase):
         self.web_driver.find_element_by_id('username')
         self.web_driver.find_element_by_id('phone_number')
         self.web_driver.find_element_by_id('email')
+
+    def test_ban_users(self):
+        self.go_to_users()
+
+        self.web_driver.find_element_by_link_text('Ban').click()
+
+        self.assertTrue('User banned successfully!' in self.web_driver.page_source)
+
