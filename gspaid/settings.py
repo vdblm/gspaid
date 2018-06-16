@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import selenium
+
+from selenium import webdriver
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -124,3 +128,11 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/misc/dashboard'
 
+os.environ.setdefault("DJANGO_WEB_DRIVER_CLASS", "Chrome")
+
+if os.environ.get('DJANGO_WEB_DRIVER_CLASS') == "Chrome":
+    WEB_DRIVER_CLASS = webdriver.Chrome
+elif os.environ.get('DJANGO_WEB_DRIVER_CLASS') == "Firefox":
+    WEB_DRIVER_CLASS = webdriver.Firefox
+else:
+    raise ValueError(os.environ.get('DJANGO_WEB_DRIVER_CLASS') + 'is not a valid web driver.')

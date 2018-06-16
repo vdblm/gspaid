@@ -1,4 +1,5 @@
 from django.test import LiveServerTestCase
+from django.conf import settings
 from selenium import webdriver
 
 
@@ -9,11 +10,11 @@ class SeleniumTestCase(LiveServerTestCase):
     """
     def setUp(self):
         super(SeleniumTestCase, self).setUp()
-        self.wd = webdriver.Chrome()
+        self.web_driver = settings.WEB_DRIVER_CLASS()
 
     def tearDown(self):
-        self.wd.quit()
+        self.web_driver.quit()
         super(SeleniumTestCase, self).tearDown()
 
     def open(self, url):
-        self.wd.get("%s%s" % (self.live_server_url, url))
+        self.web_driver.get("%s%s" % (self.live_server_url, url))

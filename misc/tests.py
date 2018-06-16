@@ -10,8 +10,8 @@ class Tests(SeleniumTestCase):
 
     def test_about_us(self):
         self.open("/misc/about_us")
-        self.assertTrue('About Us' in self.wd.page_source)
+        self.assertTrue('About Us' in self.web_driver.page_source)
 
     def test_rules(self):
         self.open("/misc/rules")
-        self.assertTrue('Rules' in self.wd.page_source)
+        self.assertTrue('Rules' in self.web_driver.page_source)

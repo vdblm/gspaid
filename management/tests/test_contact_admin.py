@@ -13,7 +13,7 @@ class Tests(SeleniumTestCase):
 
     def help_contact_admin(self, name, email, description):
         self.open("/management/contact_admin")
-        wd = self.wd
+        wd = self.web_driver
         time.sleep(1)
         name_field = wd.find_element_by_name("name")
         email_field = wd.find_element_by_name("email")
