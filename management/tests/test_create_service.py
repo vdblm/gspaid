@@ -78,7 +78,7 @@ class Tests(SeleniumTestCase):
     def test_send_notification(self):
         self.test_create_service_new_service_successful()
 
-        notification_text_element = self.web_driver.find_element_by_id('notification_test')
+        notification_text_element = self.web_driver.find_element_by_id('notification_text')
         notification_text_element.send_keys('This is a new service we are adding.')
         notification_text_element.submit()
 

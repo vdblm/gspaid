@@ -6,4 +6,8 @@ def costumer_dashboard(request):
 
 
 def employee_dashboard(request):
-    return render(request, "workflow/employee_dashboard.html")
+    return requests(request)
+
+
+def requests(request):
+    return render(request, 'workflow/requests_history.html')
