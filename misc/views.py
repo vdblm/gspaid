@@ -13,7 +13,7 @@ def rules(request):
 
 def dashboard(request):
     if request.user.is_superuser:
-        return management_views.dashboard(request)
+        return management_views.management_dashboard(request)
 
     if request.user.is_staff:
         return workflow_views.employee_dashboard(request)
