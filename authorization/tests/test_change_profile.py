@@ -31,7 +31,21 @@ class Tests(SeleniumTestCase):
     def tearDown(self):
         super().tearDown()
 
-    def help_edit_profile(self, first_name, last_name, email, extra_info):
+    def help_notification_select(self, notification):
+        AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
+        web_driver = self.web_driver
+        self.assertTrue("Dashboard" in web_driver.page_source)
+        web_driver.find_element_by_link_text("Profile").click()
+
+        time.sleep(1)
+        notification_element = web_driver.find_element_by_id('notification')
+        notification_element.send_keys(notification)
+
+        notification_element.submit()
+
+        time.sleep(1)
+
+    def help_edit_profile(self, first_name, last_name, email, notification, extra_info):
         AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
         web_driver = self.web_driver
         self.assertTrue("Dashboard" in web_driver.page_source)
@@ -44,6 +58,8 @@ class Tests(SeleniumTestCase):
         email_element = web_driver.find_element_by_id('email')
         extra_info_element = web_driver.find_element_by_id('other')
 
+        notification_element = web_driver.find_element_by_id('notification')
+
         first_name_element.clear()
         last_name_element.clear()
         email_element.clear()
@@ -52,6 +68,7 @@ class Tests(SeleniumTestCase):
         last_name_element.send_keys(last_name)
         email_element.send_keys(email)
         extra_info_element.send_keys(extra_info)
+        notification_element.send_keys(notification)
 
         change_password_element = web_driver.find_element_by_id("change-profile")
         change_password_element.click()
@@ -64,7 +81,8 @@ class Tests(SeleniumTestCase):
             first_name="ali3",
             last_name="asgari3",
             email="altostratous3@gspaid.com",
-            extra_info="this is new"
+            extra_info="this is new",
+            notification="Email"
         )
 
         self.assertTrue("successful" in self.web_driver.page_source)
@@ -102,3 +120,14 @@ class Tests(SeleniumTestCase):
     def test_change_password_successful(self):
         self.help_change_password("asdfghjkl;", "new-pass")
         self.assertTrue('CHANGED' in self.web_driver.page_source)
+
+    @override_settings(DEBUG=True)
+    def test_notification_select_SMS_successful(self):
+        self.help_notification_select("SMS")
+        self.assertTrue('CHANGED' in self.web_driver.page_source)
+
+    @override_settings(DEBUG=True)
+    def test_notification_select_Email_successful(self):
+        self.help_notification_select("Email")
+        self.assertTrue('CHANGED' in self.web_driver.page_source)
+

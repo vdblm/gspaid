@@ -20,3 +20,7 @@ def change_profile(request):
 
 def changed_profile(request):
     return render(request, "edit_user_info/changed_profile.html")
+
+
+def profile(request):
+    return render(request, "edit_user_info/profile.html")
