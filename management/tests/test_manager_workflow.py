@@ -54,7 +54,6 @@ class ManagerWorkFlowTests(SeleniumTestCase):
             status=Request.CREATED,
         )
 
-
     def tearDown(self):
         super().tearDown()
 
