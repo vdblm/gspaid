@@ -16,3 +16,7 @@ def online_wallet(request):
 
 def charged(request):
     return views.render(request, 'financial/charged.html')
+
+
+def changed(request):
+    return views.render(request, 'financial/changed.html')

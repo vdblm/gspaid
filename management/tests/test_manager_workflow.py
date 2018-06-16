@@ -148,7 +148,7 @@ class ManagerWorkFlowTests(SeleniumTestCase):
 
         self.assertTrue(
             users_category in self.web_driver.page_source,
-        )
+            )
         # we created a request for the customer user on setup.
         # assert that his or her name is shown in the requests page
         # self.assertTrue(
@@ -252,3 +252,13 @@ class ManagerWorkFlowTests(SeleniumTestCase):
 
         # check if success message is shown
         self.assertTrue('Changed user successfully!' in self.web_driver.page_source)
+
+    def test_view_currency_transactions(self):
+        # login the admin user
+        AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
+
+        charge_page_link = self.web_driver.find_element_by_partial_link_text("Log")
+        charge_page_link.click()
+        time.sleep(1)
+
+        self.assertTrue('Manager logged in last in a minute ago.' in self.web_driver.page_source)
