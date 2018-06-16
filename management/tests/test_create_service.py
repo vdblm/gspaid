@@ -35,12 +35,14 @@ class Tests(SeleniumTestCase):
     @override_settings(DEBUG=True)
     def help_create_service(self, currency_name, amount, information):
         AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
-        self.assertTrue("Dashboard" in self.web_driver.page_source)
-        self.open('/management/add_request_type')
-        title_element = self.web_driver.find_element_by_id('title')
-        amount_element = self.web_driver.find_element_by_id('amount')
-        currency_element = self.web_driver.find_element_by_id('currency')
-        extra_info_element = self.web_driver.find_element_by_id('extra-info')
+        web_driver = self.web_driver
+        self.assertTrue("Dashboard" in web_driver.page_source)
+        web_driver.find_element_by_link_text("Create New Request Type").click()
+
+        title_element = web_driver.find_element_by_id('title')
+        amount_element = web_driver.find_element_by_id('amount')
+        currency_element = web_driver.find_element_by_id('currency')
+        extra_info_element = web_driver.find_element_by_id('extra-info')
 
         title_element.send_keys('toefl')
         amount_element.send_keys('10000')
@@ -49,10 +51,21 @@ class Tests(SeleniumTestCase):
 
         extra_info_element.submit()
 
+    @override_settings(DEBUG=True)
+    def test_create_service_new_service_successful(self):
+        self.help_create_service("IRR", 98765, "It is newwwww")
         self.assertTrue('Created request type successfully' in self.web_driver.page_source)
+        notification_link = self.web_driver.find_element_by_link_text('Send Notification')
+        notification_link.click()
+        self.assertTrue('Notification' in self.web_driver.page_source)
 
     @override_settings(DEBUG=True)
-    def test_create_service_new_service(self):
-        self.help_create_service("IRR", 98765, "Not good, do not use it")
+    def test_create_service_new_service_duplicate_name(self):
+        self.help_create_service(
+            "IRR",
+            amount=123456,
+            information="You wanna buy it anyway"
+        )
+        self.assertTrue('duplicate' in self.web_driver.page_source)
 
 

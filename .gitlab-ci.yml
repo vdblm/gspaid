@@ -23,4 +23,5 @@ test:
     - chmod +x geckodriver
     - cd $initial_dir
     - export DISPLAY=:1
+    - export DJANGO_WEB_DRIVER_CLASS=Firefox
     - python manage.py test
