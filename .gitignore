@@ -109,3 +109,5 @@ db.sqlite3
 #
 resources/
 
+#
+*.swp
