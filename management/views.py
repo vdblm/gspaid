@@ -22,7 +22,7 @@ def contact_admin(request):
     )
 
 
-def dashboard(request):
+def management_dashboard(request):
     return render(request, "management/management_dashboard.html")
 
 

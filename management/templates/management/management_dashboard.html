@@ -15,9 +15,9 @@
                         <tr><td><a href="../../../documents/design/wireframe/admin/employees.html">Employees</a></td></tr>
                         <tr><td><a href="../../../documents/design/wireframe/admin/requests.html">Requests</a></td></tr>
                         <tr><td><a href="../../../documents/design/wireframe/admin/charge.html">Charge</a></td></tr>
-                        <tr><td><a href="management_dashboard.html">Log (Dashboard)</a></td></tr>
+                        <tr><td><a href="{% url 'management:management_dashboard' %}">Log (Dashboard)</a></td></tr>
                         <tr><td><a href="../../../documents/design/wireframe/admin/transactions.html">Currency Report</a></td></tr>
-                        <tr><td><a href="new_request_type.html">Create New Request Type</a></td></tr>
+                        <tr><td><a href="{% url 'management:add_request_type' %}">Create New Request Type</a></td></tr>
                         <tr><td><a href="{% url 'management:settings' %}">Settings</a></td></tr>
                         </tbody>
                     </table>
