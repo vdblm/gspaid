@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from misc import urls as misc_urls
+from misc import views as misc_views
 from authorization import urls as authorization_urls
 from financial import urls as financial_urls
 from workflow import urls as workflow_urls
@@ -24,6 +25,7 @@ from management import urls as management_urls
 
 
 urlpatterns = [
+    url(r'^/', misc_views.about_us),
     url(r'^admin/', admin.site.urls),
     url(r'^misc/', include(misc_urls)),
     url(r'^authorization/', include(authorization_urls)),
