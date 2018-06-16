@@ -6,7 +6,7 @@
 </head>
 <body>
 
-            <form action="changed_profile.html">
+            <form action="{% url 'changed_profile' %}">
                 <label for="firstName">First name</label>
                 <input type="string" id="firstName">
                 <br><br>
@@ -29,7 +29,7 @@
                 <br><br>
                 <input id="change-profile" type="submit" value="CHANGE PROFILE">
             </form>
-            <form method="get" action="change_password.html">
+            <form method="get" action="{% url 'change_password' %}">
                 <input id="change-password" type="submit" value="CHANGE PASSWORD">
             </form>
 
