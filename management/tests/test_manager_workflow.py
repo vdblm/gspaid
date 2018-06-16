@@ -5,7 +5,7 @@ import time
 from django.test import override_settings
 
 from authorization.tests.test_login import Tests as AuthorizationTests
-from financial.models import Currency
+from financial.models import Currency, Transaction
 from gspaid.abstract_test import SeleniumTestCase
 from workflow.models import RequestType, Request
 
@@ -53,7 +53,14 @@ class ManagerWorkFlowTests(SeleniumTestCase):
             request_type=self.request_type,
             status=Request.CREATED,
         )
-
+        self.test_transaction = Transaction.objects.create(
+            from_amount=486512,
+            to_amount=648512,
+            from_currency=self.IRR,
+            to_currency=self.EUR,
+            from_user=self.customer_user,
+            to_user=self.super_user
+        )
 
     def tearDown(self):
         super().tearDown()
@@ -208,3 +215,20 @@ class ManagerWorkFlowTests(SeleniumTestCase):
 
     def test_increase_organization_rial_account(self):
         self.increase_organization_account('Rial')
+
+    def test_view_currency_transactions(self):
+        # login the admin user
+        AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
+
+        charge_page_link = self.web_driver.find_element_by_link_text("Currency Report")
+        charge_page_link.click()
+        time.sleep(1)
+
+        # assert if the balances are shown
+        self.assertTrue('Rial: ' in self.web_driver.page_source)
+        self.assertTrue('Dollar: ' in self.web_driver.page_source)
+        self.assertTrue('Euro: ' in self.web_driver.page_source)
+
+        # assert if the test transaction is appeared
+        self.assertTrue('486512' in self.web_driver.page_source)
+        self.assertTrue('648512' in self.web_driver.page_source)
