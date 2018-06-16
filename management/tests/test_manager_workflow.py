@@ -117,3 +117,80 @@ class ManagerWorkFlowTests(SeleniumTestCase):
         # we created a request for the customer user on setup.
         # assert that his or her name is shown in the requests page
         self.assertTrue(self.customer_user.username in self.web_driver.page_source)
+
+        self.web_driver.find_element_by_link_text('Details').click()
+
+        self.web_driver.find_element_by_id('status')
+        self.web_driver.find_element_by_id('costumer')
+        self.web_driver.find_element_by_id('employee')
+        self.web_driver.find_element_by_id('amount')
+        self.web_driver.find_element_by_id('title')
+        self.web_driver.find_element_by_id('extra-info')
+        self.web_driver.find_element_by_id('extra-data')
+        self.web_driver.find_element_by_link_text('Zipped files')
+
+    def go_to_users(self):
+        # login the admin user
+        AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
+        time.sleep(1)
+        users_page_link = self.web_driver.find_element_by_link_text("Users")
+        users_page_link.click()
+        time.sleep(1)
+
+        self.assertTrue(
+            'Users' in self.web_driver.page_source,
+            msg='The recently added user is not shown in '
+                'the users page for the admin'
+        )
+        # we created a request for the customer user on setup.
+        # assert that his or her name is shown in the requests page
+        self.assertTrue(self.customer_user.username in self.web_driver.page_source)
+
+    def test_view_all_users(self):
+        self.go_to_users()
+
+        self.web_driver.find_element_by_link_text('Details').click()
+
+        self.web_driver.find_element_by_id('first_name')
+        self.web_driver.find_element_by_id('last_name')
+        self.web_driver.find_element_by_id('type')
+        self.web_driver.find_element_by_id('salary')
+        self.web_driver.find_element_by_id('username')
+        self.web_driver.find_element_by_id('phone_number')
+        self.web_driver.find_element_by_id('email')
+
+    def do_act_on_user(self, action):
+        self.go_to_users()
+        self.web_driver.find_element_by_link_text(action).click()
+
+    def test_ban_users(self):
+        self.do_act_on_user('Ban')
+        self.assertTrue('User banned successfully!' in self.web_driver.page_source)
+
+    def test_make_users_employee(self):
+        self.do_act_on_user('Make Employee')
+        self.assertTrue('Changed user successfully!' in self.web_driver.page_source)
+
+    def increase_organization_account(self, currency):
+        # login the admin user
+        AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
+
+        charge_page_link = self.web_driver.find_element_by_link_text("Charge")
+        charge_page_link.click()
+        time.sleep(1)
+
+        amount_element = self.web_driver.find_element_by_id('amount')
+        currency_element = self.web_driver.find_element_by_id('currency')
+
+        amount_element.send_keys('1000')
+        currency_element.send_keys(currency)
+        currency_element.submit()
+        time.sleep(1)
+
+        self.assertTrue('Account got charged successfully!' in self.web_driver.page_source)
+
+    def test_increase_organization_dollar_account(self):
+        self.increase_organization_account('$')
+
+    def test_increase_organization_rial_account(self):
+        self.increase_organization_account('Rial')
