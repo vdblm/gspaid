@@ -20,20 +20,7 @@ class Tests(SeleniumTestCase):
             password="asdfghjkl;",
             email="altostratous@gspaid.com"
         )
-        self.IRR = Currency.objects.create(
-            name="IRR"
-        )
 
-        self.EUR = Currency.objects.create(
-            name="EUR"
-        )
-        self.request_type = RequestType.objects.create(
-            name="duplicate_name",
-            description="go hell",
-            currency=self.EUR,
-            amount=123456,
-            information="father's name = ?"
-        )
 
     def tearDown(self):
         super().tearDown()
@@ -59,7 +46,7 @@ class Tests(SeleniumTestCase):
 
     @override_settings(DEBUG=True)
     def test_create_service_new_service_successful(self):
-        self.help_create_service("IRR", 98765, "It is newwwww", "Father's name: ......")
+        self.help_create_service(title="hi", currency_name="IRR", amount=98765, extra_info="It is newwwww")
         self.assertTrue('Created request type successfully' in self.web_driver.page_source)
         notification_link = self.web_driver.find_element_by_link_text('Send Notification')
         notification_link.click()
@@ -74,12 +61,3 @@ class Tests(SeleniumTestCase):
             extra_info="You wanna buy it anyway",
         )
         self.assertTrue('duplicate' in self.web_driver.page_source)
-
-    def test_send_notification(self):
-        self.test_create_service_new_service_successful()
-
-        notification_text_element = self.web_driver.find_element_by_id('notification_test')
-        notification_text_element.send_keys('This is a new service we are adding.')
-        notification_text_element.submit()
-
-        self.assertTrue('Notification sent' in self.web_driver.page_source)
