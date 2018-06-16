@@ -27,14 +27,16 @@ class Request(models.Model):
 
     CREATED = 'created'
     IN_PROGRESS = 'in_progress'
-    FAILED = 'assigned'
+    FAILED = 'failed'
     SUCCEEDED = 'succeeded'
+    SUSPICIOUS = 'suspicious'
 
     STATUS_CHOICES = (
         (CREATED, 'Created'),
         (IN_PROGRESS, 'In progress'),
         (FAILED, 'Failed'),
         (SUCCEEDED, 'Succeeded'),
+        (SUSPICIOUS, 'Suspicious'),
     )
 
     status = models.CharField(max_length=32, choices=STATUS_CHOICES, default=CREATED)
