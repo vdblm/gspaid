@@ -130,11 +130,11 @@ class ManagerWorkFlowTests(SeleniumTestCase):
         self.web_driver.find_element_by_id('extra-data')
         self.web_driver.find_element_by_link_text('Zipped files')
 
-    def go_to_users(self):
+    def go_to_users(self, users_category='Users'):
         # login the admin user
         AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
         time.sleep(1)
-        users_page_link = self.web_driver.find_element_by_link_text("Users")
+        users_page_link = self.web_driver.find_element_by_link_text(users_category)
         users_page_link.click()
         time.sleep(1)
 
@@ -147,8 +147,21 @@ class ManagerWorkFlowTests(SeleniumTestCase):
         # assert that his or her name is shown in the requests page
         self.assertTrue(self.customer_user.username in self.web_driver.page_source)
 
-    def test_view_all_users(self):
-        self.go_to_users()
+    def test_view_employees_users(self):
+        self.go_to_users('Employees')
+
+        self.web_driver.find_element_by_link_text('Details').click()
+
+        self.web_driver.find_element_by_id('first_name')
+        self.web_driver.find_element_by_id('last_name')
+        self.web_driver.find_element_by_id('type')
+        self.web_driver.find_element_by_id('salary')
+        self.web_driver.find_element_by_id('username')
+        self.web_driver.find_element_by_id('phone_number')
+        self.web_driver.find_element_by_id('email')
+
+    def test_view_customers_users(self):
+        self.go_to_users('Costumers')
 
         self.web_driver.find_element_by_link_text('Details').click()
 
