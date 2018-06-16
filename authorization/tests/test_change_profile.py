@@ -1,13 +1,10 @@
-from django.contrib.auth.models import User
-import re
 import time
 
+from django.contrib.auth.models import User
 from django.test import override_settings
 
 from authorization.tests.test_login import Tests as AuthorizationTests
-from financial.models import Currency
 from gspaid.abstract_test import SeleniumTestCase
-from workflow.models import RequestType
 
 
 class Tests(SeleniumTestCase):

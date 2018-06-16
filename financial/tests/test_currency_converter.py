@@ -32,5 +32,3 @@ class Tests(SeleniumTestCase):
 
         self.assertAlmostEqual(ratio * euro, new_euro, places=0)
 
-        web_driver.close()
-
