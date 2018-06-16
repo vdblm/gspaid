@@ -28,3 +28,5 @@ def dashboard(request):
 
 def add_request_type(request):
     return render(request, 'management/new_request_type.html')
+
+def setting

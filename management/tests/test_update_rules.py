@@ -20,20 +20,7 @@ class Tests(SeleniumTestCase):
             password="asdfghjkl;",
             email="altostratous@gspaid.com"
         )
-        self.IRR = Currency.objects.create(
-            name="IRR"
-        )
 
-        self.EUR = Currency.objects.create(
-            name="EUR"
-        )
-        self.request_type = RequestType.objects.create(
-            name="duplicate_name",
-            description="go hell",
-            currency=self.EUR,
-            amount=123456,
-            information="father's name = ?"
-        )
 
     def tearDown(self):
         super().tearDown()
