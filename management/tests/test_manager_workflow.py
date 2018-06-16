@@ -118,3 +118,39 @@ class ManagerWorkFlowTests(SeleniumTestCase):
         # we created a request for the customer user on setup.
         # assert that his or her name is shown in the requests page
         self.assertTrue(self.customer_user.username in self.web_driver.page_source)
+
+        self.web_driver.find_element_by_link_text('Details').click()
+
+        self.web_driver.find_element_by_id('status')
+        self.web_driver.find_element_by_id('costumer')
+        self.web_driver.find_element_by_id('employee')
+        self.web_driver.find_element_by_id('amount')
+        self.web_driver.find_element_by_id('title')
+        self.web_driver.find_element_by_id('extra-info')
+        self.web_driver.find_element_by_id('extra-data')
+        self.web_driver.find_element_by_link_text('Zipped files')
+
+    def test_view_all_users(self):
+        # login the admin user
+        AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
+
+        requests_page_link = self.web_driver.find_element_by_link_text("Users")
+
+        requests_page_link.click()
+
+        # self.assertTrue('Users' in self.web_driver.page_source, msg='The recently added user is not shown in '
+        #                                                             'the users page for the admin')
+
+        # we created a request for the customer user on setup.
+        # assert that his or her name is shown in the requests page
+        self.assertTrue(self.customer_user.username in self.web_driver.page_source)
+
+        self.web_driver.find_element_by_link_text('Details').click()
+
+        self.web_driver.find_element_by_id('first_name')
+        self.web_driver.find_element_by_id('last_name')
+        self.web_driver.find_element_by_id('type')
+        self.web_driver.find_element_by_id('salary')
+        self.web_driver.find_element_by_id('username')
+        self.web_driver.find_element_by_id('phone_number')
+        self.web_driver.find_element_by_id('email')
