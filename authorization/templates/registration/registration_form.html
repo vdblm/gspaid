@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<form method="post" action="/documents/design/wireframe/customer/account_created.html">
+  {% csrf_token %}
+  {{ form.as_p }}
+    <input id="firstName">
+    <input id="lastName">
+    <input id="phoneNumber">
+  <input type="submit" value="{% trans 'Submit' %}" />
+</form>
+{% endblock %}

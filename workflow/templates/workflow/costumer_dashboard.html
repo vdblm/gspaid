@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="../../../documents/design/wireframe/styles.css">
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td width="20%">
+                    <table>
+                        <tbody>
+                        <tr><td><a href="{%  url 'profile' %}">Profile</a></td></tr>
+                        <tr><td><a href="{%  url 'financial:internal_payment' %}">Internal Payment</a></td></tr>
+                        <tr><td><a href="{% url 'financial:online_wallet' %}">Wallet</a></td></tr>
+                        <tr><td><a href="{% url 'workflow:costumer_requests' %}">Requests</a></td></tr>
+               		<tr><td><a href="{% url 'workflow:requests' %}">Requests History</a></td></tr>
+                        <tr><td><a href="{% url 'workflow:dashboard' %}">Log</a></td></tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td width="80%">
+                    <h2>Notifications</h2>
+                    <table>
+                        <thead>
+                        <th>Time</th>
+                        <th>Description</th>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>12:50</td>
+                            <td style="color: red;">New features has been added to the website my lord!</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

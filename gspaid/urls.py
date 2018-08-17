@@ -1,0 +1,36 @@
+"""gspaid URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/1.10/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.conf.urls import url, include
+    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
+"""
+from django.conf.urls import url, include
+from django.contrib import admin
+
+from misc import urls as misc_urls
+from misc import views as misc_views
+from authorization import urls as authorization_urls
+from financial import urls as financial_urls
+from workflow import urls as workflow_urls
+from management import urls as management_urls
+
+
+urlpatterns = [
+    url(r'^/', misc_views.about_us),
+    url(r'^admin/', admin.site.urls),
+    url(r'^misc/', include(misc_urls)),
+    url(r'^authorization/', include(authorization_urls)),
+    url(r'^management/', include(management_urls)),
+    url(r'^financial/', include(financial_urls)),
+    url(r'^workflow/', include(workflow_urls)),
+    # url(r'^management/', include(management_urls)),
+]

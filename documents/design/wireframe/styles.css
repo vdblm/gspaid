@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+}
+
+td {
+    align-content: center;
+    border: solid;
+}
+
+textarea, select, input {
+    width: 100%;
+}
