@@ -120,7 +120,7 @@ class Tests(SeleniumTestCase):
     def test_change_password_successful(self):
         self.help_change_password("asdfghjkl;", "new-pass")
         time.sleep(1)
-        self.assertTrue('CHANGED' in self.web_driver.page_source)
+        self.assertTrue('Password change successful' in self.web_driver.page_source)
 
     @override_settings(DEBUG=True)
     def test_notification_select_SMS_successful(self):
