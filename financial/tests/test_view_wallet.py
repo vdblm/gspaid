@@ -1,7 +1,7 @@
 import re
 import time
 
-from django.contrib.auth.models import User
+from authorization.models import User
 
 from gspaid.abstract_test import SeleniumTestCase
 

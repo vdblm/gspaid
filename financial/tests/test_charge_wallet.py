@@ -1,5 +1,5 @@
 import time
-from django.contrib.auth.models import User
+from authorization.models import User
 from django.test import override_settings
 
 from gspaid.abstract_test import SeleniumTestCase

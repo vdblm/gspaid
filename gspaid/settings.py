@@ -136,3 +136,5 @@ elif os.environ.get('DJANGO_WEB_DRIVER_CLASS') == "Firefox":
     WEB_DRIVER_CLASS = webdriver.Firefox
 else:
     raise ValueError(os.environ.get('DJANGO_WEB_DRIVER_CLASS') + 'is not a valid web driver.')
+
+AUTH_USER_MODEL = 'authorization.User'

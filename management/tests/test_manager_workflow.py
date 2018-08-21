@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from authorization.models import User
 import re
 import time
 
