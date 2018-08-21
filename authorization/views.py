@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render
 
 
@@ -10,7 +11,13 @@ def index(request):
 
 
 def change_profile(request):
-    user_form = UserForm()
+    if request.method == 'POST':
+        user_form = UserForm(request.POST)
+        if user_form.is_valid():
+            user_form.save()
+            messages.add_message(request, messages.INFO, 'Profile saved successfully!')
+    else:
+        user_form = UserForm(instance=request.user)
     return render(request, "edit_user_info/profile.html", {"user_form": user_form})
 
 

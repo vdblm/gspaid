@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Profile</title>
-</head>
-<body>
+{% extends 'misc/base.html' %}
+{% block content %}
+    {% block page_title %}Profile{% endblock page_title %}
 
             <form action="{% url 'change_profile' %}" method="post">
                 {% csrf_token %}
                 {{ user_form }}
+                <input type="submit" value="Save Profile">
             </form>
-            <form method="get" action="{% url 'auth_password_change' %}">
-                <input id="change-password" type="submit" value="CHANGE PASSWORD">
-            </form>
+            <a href="{% url 'auth_password_change' %}">CHANGE PASSWORD</a>
 
-</body>
-</html>
+{% endblock content %}

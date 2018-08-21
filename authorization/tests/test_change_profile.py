@@ -42,7 +42,7 @@ class Tests(SeleniumTestCase):
 
         time.sleep(1)
 
-    def help_edit_profile(self, first_name, last_name, email, notification, extra_info):
+    def help_edit_profile(self, first_name, last_name, email, notification, phone_number):
         AuthorizationTests.help_login(self, username="alto", password="asdfghjkl;")
         web_driver = self.web_driver
         self.assertTrue("Dashboard" in web_driver.page_source)
@@ -53,17 +53,17 @@ class Tests(SeleniumTestCase):
         first_name_element = web_driver.find_element_by_name('first_name')
         last_name_element = web_driver.find_element_by_name('last_name')
         email_element = web_driver.find_element_by_name('email')
-        extra_info_element = web_driver.find_element_by_name('phone_number')
+        phone_number_element = web_driver.find_element_by_name('phone_number')
         notification_element = web_driver.find_element_by_name('notification_is_enabled')
 
         first_name_element.clear()
         last_name_element.clear()
         email_element.clear()
-        extra_info_element.clear()
+        phone_number_element.clear()
         first_name_element.send_keys(first_name)
         last_name_element.send_keys(last_name)
         email_element.send_keys(email)
-        extra_info_element.send_keys(extra_info)
+        phone_number_element.send_keys(phone_number)
         notification_element.send_keys(notification)
 
         notification_element.submit()
@@ -76,7 +76,7 @@ class Tests(SeleniumTestCase):
             first_name="ali3",
             last_name="asgari3",
             email="altostratous3@gspaid.com",
-            extra_info="this is new",
+            phone_number="+989136496628",
             notification="Email"
         )
 
