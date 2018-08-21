@@ -40,3 +40,5 @@ class Tests(SeleniumTestCase):
     def test_charge_wallet(self):
         Tests.help_send_request(self, amount=10000000)
         self.assertTrue('Account got charged successfully!' in self.web_driver.page_source)
+
+    # TODO check floor and ceiling
