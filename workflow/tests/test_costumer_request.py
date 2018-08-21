@@ -41,7 +41,6 @@ class Tests(SeleniumTestCase):
         self.submit = extra_data_element.submit()
 
     def test_costumer_correct_request(self):
-
         Financial_Test.test_charge_wallet(self)
 
         self.help_send_request(title='TOEFL Exam', extra_data='extra_data')

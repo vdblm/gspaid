@@ -20,3 +20,7 @@ def charged(request):
 
 def changed(request):
     return views.render(request, 'financial/changed.html')
+
+
+def internal_payment(request):
+    return views.render(request, 'financial/internal_payment.html')
