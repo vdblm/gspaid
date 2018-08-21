@@ -96,11 +96,13 @@ class Tests(SeleniumTestCase):
 
         time.sleep(1)
 
-        old_password_element = web_driver.find_element_by_id('oldpassword')
-        new_password_element = web_driver.find_element_by_id('newpassword')
+        old_password_element = web_driver.find_element_by_name('old_password')
+        new_password_1_element = web_driver.find_element_by_name('new_password1')
+        new_password_2_element = web_driver.find_element_by_name('new_password2')
 
         old_password_element.send_keys(old_password)
-        new_password_element.send_keys(new_password)
+        new_password_1_element.send_keys(new_password)
+        new_password_2_element.send_keys(new_password)
 
         submit_attempt = web_driver.find_element_by_xpath("//*[@type='submit']")
         if submit_attempt is None:
@@ -111,11 +113,13 @@ class Tests(SeleniumTestCase):
     @override_settings(DEBUG=True)
     def test_change_password_wrong_old(self):
         self.help_change_password("wrong-old-pass", "new-pass")
-        self.assertTrue('password is wrong' in self.web_driver.page_source)
+        time.sleep(0.5)
+        self.assertTrue('Your old password was entered incorrectly.' in self.web_driver.page_source)
 
     @override_settings(DEBUG=True)
     def test_change_password_successful(self):
         self.help_change_password("asdfghjkl;", "new-pass")
+        time.sleep(1)
         self.assertTrue('CHANGED' in self.web_driver.page_source)
 
     @override_settings(DEBUG=True)
