@@ -89,7 +89,7 @@ class Tests(SeleniumTestCase):
         self.assertTrue("Dashboard" in web_driver.page_source)
         web_driver.find_element_by_link_text("Profile").click()
 
-        change_password_element = web_driver.find_element_by_id("change-password")
+        change_password_element = web_driver.find_element_by_link_text('Change Password')
         change_password_element.click()
 
         time.sleep(1)
