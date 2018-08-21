@@ -31,14 +31,16 @@ class Tests(SeleniumTestCase):
 
         web_driver = selenium_test_case.web_driver
 
-        amount_element = web_driver.find_element_by_id('amount')
+        amount_element = web_driver.find_element_by_name('to_amount')
 
         amount_element.send_keys(amount)
 
         selenium_test_case.submit = amount_element.submit()
 
+    @override_settings(DEBUG=True)
     def test_charge_wallet(self):
         Tests.help_send_request(self, amount=10000000)
+        time.sleep(1)
         self.assertTrue('Account got charged successfully!' in self.web_driver.page_source)
 
     # TODO check floor and ceiling

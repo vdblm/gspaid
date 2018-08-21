@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles.css">
-    <title>online wallet</title>
-</head>
-<body>
+{% extends 'misc/base.html' %}
+{% block content %}
 <form method="get" action="online_wallet.html">
     <label for="Rial">Rial: </label>
     <input type="number" id="Rial" readonly="readonly" value="100000000">
@@ -19,16 +13,15 @@
 
 <br>
 
-<form method="get" action="{% url 'financial:charged' %}">
-    <label for="amount">Amount to charge:</label>
-    <input type="number" id="amount">
-    <label>Rials</label>
+<form method="post" action="{% url 'financial:online_wallet' %}">
+    {% csrf_token %}
+    {{ charge_wallet_form }}
     <input type="submit" value="Charge">
 </form>
 
 <br>
 
-<form method="get" action="{% url 'financial:changed' %}">
+<form method="get" action="{% url 'financial:online_wallet' %}">
     <label for="amount-to-change">Amount to change:</label>
     <input type="number" id="amount-to-change">
     <select id="from-currency" value="$">
@@ -46,6 +39,4 @@
     <input id="update-change-info" type="submit" value="update change info">
     <input id="change" type="submit" value="Change!">
 </form>
-
-</body>
-</html>
+{% endblock content %}

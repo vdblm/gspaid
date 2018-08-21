@@ -39,5 +39,5 @@ class Transaction(models.Model):
 
     status = models.CharField(max_length=32, choices=STATUS_CHOICES, default=CREATED)
 
-    from_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="going_transaction_set")
-    to_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="coming_transaction_set")
+    from_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="going_transaction_set", null=True)
+    to_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="coming_transaction_set", null=True)
