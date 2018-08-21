@@ -15,6 +15,7 @@ class Tests(SeleniumTestCase):
             first_name="ali",
             last_name="asgari",
             password="asdfghjkl;",
+            phone_number="+989136496618",
             email="altostratous@gspaid.com"
         )
         self.user = User.objects.create_user(
@@ -22,6 +23,7 @@ class Tests(SeleniumTestCase):
             first_name="ali2",
             last_name="asgari2",
             password="asdfghjkl;2",
+            phone_number="+989136496618",
             email="altostratous2@gspaid.com"
         )
 
@@ -35,7 +37,7 @@ class Tests(SeleniumTestCase):
         web_driver.find_element_by_link_text("Profile").click()
 
         time.sleep(1)
-        notification_element = web_driver.find_element_by_id('notification')
+        notification_element = web_driver.find_element_by_name('notification_type')
         notification_element.send_keys(notification)
 
         notification_element.submit()
@@ -54,7 +56,7 @@ class Tests(SeleniumTestCase):
         last_name_element = web_driver.find_element_by_name('last_name')
         email_element = web_driver.find_element_by_name('email')
         phone_number_element = web_driver.find_element_by_name('phone_number')
-        notification_element = web_driver.find_element_by_name('notification_is_enabled')
+        notification_element = web_driver.find_element_by_name('notification_type')
 
         first_name_element.clear()
         last_name_element.clear()
@@ -111,7 +113,7 @@ class Tests(SeleniumTestCase):
     @override_settings(DEBUG=True)
     def test_change_password_wrong_old(self):
         self.help_change_password("wrong-old-pass", "new-pass")
-        time.sleep(0.5)
+        time.sleep(1)
         self.assertTrue('Your old password was entered incorrectly.' in self.web_driver.page_source)
 
     @override_settings(DEBUG=True)
@@ -123,10 +125,10 @@ class Tests(SeleniumTestCase):
     @override_settings(DEBUG=True)
     def test_notification_select_SMS_successful(self):
         self.help_notification_select("SMS")
-        self.assertTrue('CHANGED' in self.web_driver.page_source)
+        self.assertTrue('Profile saved successfully!' in self.web_driver.page_source)
 
     @override_settings(DEBUG=True)
     def test_notification_select_Email_successful(self):
         self.help_notification_select("Email")
-        self.assertTrue('CHANGED' in self.web_driver.page_source)
+        self.assertTrue('Profile saved successfully!' in self.web_driver.page_source)
 

@@ -15,6 +15,10 @@
         {% endif %}
     {% endblock messages %}
 
+    {% if request.user.username %}
+        Hi, {{request.user.username}}!
+    {% endif %}
+
     {% block content %}
     {% endblock content %}
 </body>
