@@ -2,6 +2,9 @@ from django.conf.urls import include, url
 from authorization import views
 from django.contrib.auth import views as auth_views
 
+# keep not using this for the django-registration to work
+# app_name = 'authorization'
+
 urlpatterns = [
     # workaround for django-registration issue #106
     # https://github.com/ubernostrum/django-registration/issues/106
@@ -12,6 +15,6 @@ urlpatterns = [
     ),
     url(r'^', include('registration.backends.simple.urls')),
     url(r'^change_profile/', views.change_profile, name='change_profile'),
+    url(r'^profile/', views.change_profile, name="change_profile_alias"),
     url(r'^changed_profile/', views.changed_profile, name='changed_profile'),
-    url(r'^profile/', views.profile, name="profile"),
 ]

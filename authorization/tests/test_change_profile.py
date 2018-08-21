@@ -50,12 +50,11 @@ class Tests(SeleniumTestCase):
 
         time.sleep(1)
 
-        first_name_element = web_driver.find_element_by_id('firstName')
-        last_name_element = web_driver.find_element_by_id('lastName')
-        email_element = web_driver.find_element_by_id('email')
-        extra_info_element = web_driver.find_element_by_id('other')
-
-        notification_element = web_driver.find_element_by_id('notification')
+        first_name_element = web_driver.find_element_by_name('first_name')
+        last_name_element = web_driver.find_element_by_name('last_name')
+        email_element = web_driver.find_element_by_name('email')
+        extra_info_element = web_driver.find_element_by_name('phone_number')
+        notification_element = web_driver.find_element_by_name('notification_is_enabled')
 
         first_name_element.clear()
         last_name_element.clear()
@@ -67,8 +66,7 @@ class Tests(SeleniumTestCase):
         extra_info_element.send_keys(extra_info)
         notification_element.send_keys(notification)
 
-        change_password_element = web_driver.find_element_by_id("change-profile")
-        change_password_element.click()
+        notification_element.submit()
 
         time.sleep(1)
 
