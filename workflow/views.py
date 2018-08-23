@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from workflow.forms import UserRequestForm
 
 
 def costumer_dashboard(request):
@@ -6,10 +7,17 @@ def costumer_dashboard(request):
 
 
 def employee_dashboard(request):
-    return requests(request)
+    return render(request)
 
 
-def requests(request):
+def user_requests(request):
+    request_form = UserRequestForm(
+            user=request.user,
+            data=request.POST if request.method == "POST" else None
+        )
+    if request.method == "POST":
+        if request_form.is_valid():
+            request_form.save()
     return render(request, 'workflow/requests_history.html')
 
 
