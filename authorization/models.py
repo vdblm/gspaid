@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.core.validators import RegexValidator
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from solo.models import SingletonModel
 
 
 class User(AbstractUser):
@@ -19,3 +20,8 @@ class User(AbstractUser):
     )
 
     notification_type = models.CharField(max_length=8, choices=NOTIFICATION_CHOICES, default=EMAIL)
+
+
+class SuperUser(User, SingletonModel):
+    phone_number = "+989381137897"
+
