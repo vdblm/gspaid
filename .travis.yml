@@ -1,8 +1,10 @@
-stages:
-  - test
-  - deploy
+language: python
+python:
+  - "3.5"
+  - "3.6"
 
-
+install:
+  - pip install -r requirements.txt
 test:
   stage: test
   image: python
@@ -15,7 +17,6 @@ test:
     - mv /usr/lib/firefox-esr/firefox-esr /usr/lib/firefox-esr/firefox-esr_orig
     - ln -s /opt/firefox/firefox/firefox /usr/lib/firefox-esr/firefox-esr
     - apt-get -yq install Xvfb
-    - pip install -r requirements.txt
     - initial_dir=`pwd`
     - cd /usr/bin
     - wget https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-linux64.tar.gz
