@@ -6,8 +6,9 @@ def costumer_dashboard(request):
     return render(request, "workflow/costumer_dashboard.html")
 
 
+# Temporary
 def employee_dashboard(request):
-    return render(request)
+    return render(request, "workflow/costumer_dashboard.html")
 
 
 def user_requests(request):
