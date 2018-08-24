@@ -18,6 +18,9 @@ class Currency(models.Model):
         )
         return float(json.load(response.text)[conversion_key])
 
+    def __str__(self):
+        return self.name
+
 
 class Transaction(models.Model):
     from_currency = models.ForeignKey(Currency, related_name='going_transaction_set')
