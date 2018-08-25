@@ -18,8 +18,8 @@ class RequestTypeBase(models.Model):
 
 class ExchangeRequestType(RequestTypeBase):
     # Transaction object for fee
-    src_currency = models.ForeignKey(Currency)
-    dst_currency = models.ForeignKey(Currency)
+    src_currency = models.ForeignKey(Currency, related_name="going_exchangeRequestType_set")
+    dst_currency = models.ForeignKey(Currency, related_name="coming_exchangeRequestType_set")
 
 
 class ExchangeRequest(models.Model):
@@ -45,8 +45,8 @@ class ExchangeRequest(models.Model):
 # The only thing differs between different currencies is fee law
 # which we consider the same here (AnonymousRequest).
 class AnonymousRequest(models.Model):
-    src_user = models.ForeignKey(settings.AUTH_USER_MODEL)
-    dst_user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    src_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="going_anonymousRequest_set")
+    dst_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="coming_anonymousRequest_set")
 
     currency = models.ForeignKey(Currency)
 
@@ -72,13 +72,13 @@ class AnonymousRequest(models.Model):
 class RequestType(RequestTypeBase):
     currency = models.ForeignKey(Currency)
     # Set null if amount is not fixed
-    amount = models.DecimalField(max_digits=128, decimal_places=64, null=True)
+    amount = models.DecimalField(max_digits=128, decimal_places=64, null=True, blank=True)
     information = models.TextField()
 
 
 class Request(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
-    employee = models.ForeignKey(settings.AUTH_USER_MODEL)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="userGoing_request_set")
+    employee = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="employeeComing_request_set")
     request_type = models.ForeignKey(RequestType)
     transaction = models.ForeignKey(Transaction)
 
