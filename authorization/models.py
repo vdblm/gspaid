@@ -21,6 +21,8 @@ class User(AbstractUser):
 
     notification_type = models.CharField(max_length=8, choices=NOTIFICATION_CHOICES, default=EMAIL)
 
+    salary = models.IntegerField(default=0, null=False)
+
 
 class SuperUser(User, SingletonModel):
     phone_number = "+989381137897"
