@@ -1,0 +1,9 @@
+{% extends 'misc/base.html' %}
+{% block content %}
+    {% block page_title %}Request History{% endblock page_title %}
+    {% for user_request in user_requests %}
+         <a href="{% url 'workflow:request_history' user_request.id %}"> Request {{ user_request.request_type.name }} {{ user_request.id }}</a>
+    {% endfor %}
+
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'misc/base.html' %}
+{% block content %}
+    Request: {{ request.request_type.name }} {{ request.id }}
+    <br>
+    Amount: {{ request.amount }}
+    <br>
+    Currency: {{ request.request_type.currency }}
+    <br>
+    Employee: {{ request.employee.name }}
+    <br>
+    Employee Description: {{ request.employee_description }}
+    <br>
+    Status: {{ request.status }}
+    <br>
+    User Description: {{ request.user_description }}
+
+{% endblock content %}
