@@ -42,7 +42,6 @@ class Tests(SeleniumTestCase):
 
     def test_costumer_correct_request(self):
         Financial_Test.test_charge_wallet(self)
-
         self.help_send_request(title='TOEFL Exam', extra_data='extra_data')
         self.assertTrue('Successful' in self.web_driver.page_source)
 

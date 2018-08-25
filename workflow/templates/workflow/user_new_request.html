@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'misc/base.html' %}
+{% block content %}
+    {{ request_type.name }}
+    <br>
+    Description: {{ request_type.description }}
+    <br>
+    Currency: {{ request_type.currency }}
+    <br>
+    {% if request_type.amount %}
+        Amount: {{ request_type.amount }}
+    {% endif %}
+    <br>
+    Information: {{ request_type.information }}
+    <br>
+    <form method="post" action="{% url 'workflow:new_request' request_type.id %}">
+    {% csrf_token %}
+    {{ new_request_form }}
+    <input type="submit" value="Charge">
+    </form>
+
+
+{% endblock content %}

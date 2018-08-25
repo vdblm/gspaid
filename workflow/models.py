@@ -3,6 +3,7 @@ from django.db import models
 
 from financial.models import Currency
 from financial.models import Transaction
+from authorization.models import SuperUser
 
 
 # Fee Transaction should be in all requests (some requests like "Toefl" and "Uni Apply" don't need it).
@@ -78,9 +79,11 @@ class RequestType(RequestTypeBase):
 
 class Request(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="userGoing_request_set")
-    employee = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="employeeComing_request_set")
+    employee = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="employeeComing_request_set", null=True)
     request_type = models.ForeignKey(RequestType)
     transaction = models.ForeignKey(Transaction)
+    # Not sure about blank = True
+    amount = models.DecimalField(max_digits=128, decimal_places=64, null=True)
 
     CREATED = 'created'
     IN_PROGRESS = 'in_progress'
@@ -97,18 +100,21 @@ class Request(models.Model):
     )
 
     status = models.CharField(max_length=32, choices=STATUS_CHOICES, default=CREATED)
-    attachment = models.FileField()
+    attachment = models.FileField(null=True, blank=True)
 
     user_description = models.TextField()
-    employee_description = models.TextField()
+    employee_description = models.TextField(null=True)
 
     def create_transaction(self):
+        site_user = SuperUser.get_solo()
+        if self.request_type.amount is not None:
+            self.amount = self.request_type.amount
         self.transaction = Transaction.objects.create(from_currency=self.request_type.currency,
                                                       to_currency=self.request_type.currency,
                                                       from_amount=self.request_type.amount,
-                                                      to_amount=self.request_type.amount,
+                                                      to_amount=self.amount,
                                                       from_user=self.user,
-                                                      to_user=settings.AUTH_SUPER_USER_MODEL)
+                                                      to_user=site_user)
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         self.create_transaction()
