@@ -25,5 +25,4 @@ class User(AbstractUser):
 
 
 class SuperUser(User, SingletonModel):
-    phone_number = "+989381137897"
-
+    pass
