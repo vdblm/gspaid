@@ -7,14 +7,19 @@ from django.db import migrations, models
 import django.db.models.deletion
 
 
-class Migration(migrations.Migration):
+def add_default_currencies(apps, schema_editor):
+    Currency = apps.get_model('financial', 'Currency')
+    Currency.objects.create(name='IRR')
+    Currency.objects.create(name='EUR')
+    Currency.objects.create(name='USD')
 
+
+class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
-
     operations = [
         migrations.CreateModel(
             name='Currency',
@@ -29,11 +34,20 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('from_amount', models.DecimalField(decimal_places=64, max_digits=128)),
                 ('to_amount', models.DecimalField(decimal_places=64, max_digits=128)),
-                ('status', models.CharField(choices=[('created', 'Created'), ('failed', 'Failed'), ('succeeded', 'Succeeded')], default='created', max_length=32)),
-                ('from_currency', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='going_transaction_set', to='financial.Currency')),
-                ('from_user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='going_transaction_set', to=settings.AUTH_USER_MODEL)),
-                ('to_currency', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='coming_transaction_set', to='financial.Currency')),
-                ('to_user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='coming_transaction_set', to=settings.AUTH_USER_MODEL)),
+                ('status',
+                 models.CharField(choices=[('created', 'Created'), ('failed', 'Failed'), ('succeeded', 'Succeeded')],
+                                  default='created', max_length=32)),
+                ('from_currency',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='going_transaction_set',
+                                   to='financial.Currency')),
+                ('from_user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE,
+                                                related_name='going_transaction_set', to=settings.AUTH_USER_MODEL)),
+                ('to_currency',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='coming_transaction_set',
+                                   to='financial.Currency')),
+                ('to_user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE,
+                                              related_name='coming_transaction_set', to=settings.AUTH_USER_MODEL)),
             ],
         ),
+        migrations.RunPython(add_default_currencies)
     ]
