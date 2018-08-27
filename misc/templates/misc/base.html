@@ -18,8 +18,10 @@
     {% if request.user.username %}
         Hi, {{request.user.username}}!
     {% endif %}
+    <br>
 
     {% block content %}
     {% endblock content %}
+
 </body>
 </html>

@@ -1,0 +1,13 @@
+{% extends 'misc/base.html' %}
+{% block content %}
+    {% block page_title %}Users{% endblock page_title %}
+
+    {% for user in users %}
+         <a href="{% url 'workflow:requests_history_id' user.id %}"> User,  {{ user.username }} {{ user.id }}</a>
+    {% endfor %}
+    {% if not users%}
+        No User
+    {% endif %}
+
+
+{% endblock content %}

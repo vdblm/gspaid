@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'misc/base.html' %}
+{% block content %}
+    {% block page_title %}Users{% endblock page_title %}
+
+    {% for user in users %}
+         <a href="{% url 'management:manage_profile' user.id %}"> User,  {{ user.username }} {{ user.id }}</a>
+    {% endfor %}
+    {% if not users%}
+        No User
+    {% endif %}
+
+
+{% endblock content %}

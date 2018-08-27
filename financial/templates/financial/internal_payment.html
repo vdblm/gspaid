@@ -1,42 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles.css">
-    <title>online wallet</title>
-</head>
-<body>
+{% extends 'misc/base.html' %}
+{% block content %}
+    <form method="post" action="{% url 'financial:internal_payment' %}">
+        {% csrf_token %}
+        {{ new_anonymous_request_form }}
+        <input type="submit" value="Submit">
+    </form>
 
-<form method="get" action="{% url 'financial:charged' %}">
-    <label for="amount">Amount:</label>
-    <input type="number" id="amount">
-    <label>Rials</label>
-
-<br>
-    <label for="account_number">Account Id:</label>
-    <input id="account_number">
-
-<br>
-    <label for="email">Email:</label>
-    <input id="email">
-<br>
-    <label for="phone">Phone Number:</label>
-    <input id="phone">
-
-<br>
-    <input type="submit" value="Charge">
-</form>
-
-<br>
-
-</body>
-</html></title>
-</head>
-<body>
-
-</body>
-</html>
+{% endblock content %}

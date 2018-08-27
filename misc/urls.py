@@ -17,8 +17,9 @@ from django.conf.urls import url
 from django.contrib import admin
 from . import views
 
+app_name = 'misc'
 urlpatterns = [
     url(r'^about_us/', views.about_us),
-    url(r'^rules/', views.rules),
+    url(r'^rules/', views.rules, name='rules'),
     url(r'^dashboard/', views.dashboard, name='dashboard')
 ]

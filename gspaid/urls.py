@@ -25,7 +25,7 @@ from management import urls as management_urls
 
 
 urlpatterns = [
-    url(r'^$', misc_views.about_us),
+    url(r'^$', misc_views.about_us, name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'^misc/', include(misc_urls)),
     url(r'^authorization/', include(authorization_urls)),

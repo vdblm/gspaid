@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'misc/base.html' %}
+{% block content %}
+    {{ exchange_request_type.name }}
+    <br>
+    Description: {{ exchange_request_type.description }}
+    <br>
+    Source Currency: {{ exchange_request_type.src_currency }}
+    <br>
+    Destination Currency: {{ exchange_request_type.dst_currency }}
+    <br>
+    {% if amount %}
+    Destination Amount: {{ amount }}
+
+    <br>
+    {% endif %}
+    <form method="post" action="{% url 'workflow:new_exchange_request' exchange_request_type.id %}">
+    {% csrf_token %}
+    {{ new_exchange_request_form }}
+    <input type="submit" value="Submit">
+    </form>
+
+
+{% endblock content %}

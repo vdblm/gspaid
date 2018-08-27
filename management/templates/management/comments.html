@@ -1,0 +1,14 @@
+{% extends 'misc/base.html' %}
+{% block content %}
+<form method="get" action="{% url 'management:comments' %}">
+{% for comment in comments %}
+    <label for={{ comment.id}}>From {{ comment.name }}: </label>
+    <input type="tex" id={{ comment.id }}a readonly="readonly" value={{ comment.email }}>
+    <input type="text" id={{ comment.id }}b readonly="readonly" value={{ comment.message }}>
+    <br>
+{% endfor %}
+</form>
+
+<br>
+<br>
+{% endblock content %}

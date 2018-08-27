@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'misc/base.html' %}
+{% block content %}
+    <form method="post" action="{% url 'workflow:new_anonymous_request' request_type.id %}">
+        <label for="dst_email">Destination User Email:</label>
+        <input id="dst_email">
+        <br>
+        {% csrf_token %}
+        {{ new_anonymous_request_form }}
+        <input type="submit" value="Submit">
+    </form>
+
+{% endblock content %}

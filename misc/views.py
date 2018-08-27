@@ -1,10 +1,19 @@
+from django.contrib import messages
 from django.shortcuts import render
 from management import views as management_views
 from workflow import views as workflow_views
+from management.forms import ContactAdminForm
 
 
 def about_us(request):
-    return render(request, "misc/home.html")
+    user = request.user
+    contact_admin_form = ContactAdminForm(request.POST)
+    if request.method == 'POST':
+        if contact_admin_form.is_valid():
+            contact_admin_form.save()
+            messages.success(request, "Sent message to admin.")
+    return render(request, "misc/home.html", {'user': user,
+                                              'contact_admin_form': contact_admin_form})
 
 
 def rules(request):

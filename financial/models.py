@@ -11,7 +11,7 @@ class Currency(models.Model):
 
     @property
     def ratio(self):
-        conversion_key = 'IRR_' + self.name
+        conversion_key = "IRR_" + self.name
         response = requests.request(
             'GET',
             'https://free.currencyconverterapi.com/api/v5/convert?q=%s&compact=ultra' % conversion_key

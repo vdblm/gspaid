@@ -1,0 +1,8 @@
+{% extends 'misc/base.html' %}
+{% block content %}
+    {% for transaction in transactions %}
+         <a href="{% url 'management:transaction' transaction.id %}">Transaction {{ transaction.id}}</a>
+        <br>
+    {% endfor %}
+
+{% endblock content %}

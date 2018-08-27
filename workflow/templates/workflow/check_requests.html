@@ -1,0 +1,19 @@
+{% extends 'misc/base.html' %}
+{% block content %}
+    {% block page_title %}Check Requests{% endblock page_title %}
+    No Employee Requests:
+    <br>
+    {% for no_employee_request in no_employee_requests %}
+        <a href="{% url 'workflow:check_request' no_employee_request.id %}">Request {{ no_employee_request.request_type.name }} {{ no_employee_request.id }}</a>
+        <br>
+    {% endfor %}
+
+    Your Requests:
+    <br>
+    {% for his_request in his_requests %}
+         <a href="{% url 'workflow:check_request' his_request.id %}">Request {{ his_request.request_type.name }} {{ his_request.id }}</a>
+        <br>
+    {% endfor %}
+
+
+{% endblock content %}

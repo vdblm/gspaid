@@ -15,7 +15,7 @@
     <form method="post" action="{% url 'workflow:new_request' request_type.id %}">
     {% csrf_token %}
     {{ new_request_form }}
-    <input type="submit" value="Charge">
+    <input type="submit" value="Submit">
     </form>
 
 

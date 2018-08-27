@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'misc/base.html' %}
+{% block content %}
+    {% block page_title %}New Exchange Request{% endblock page_title %}
+    {% for exchange_request_type in exchange_request_types %}
+         <a href="{% url 'workflow:new_exchange_request' exchange_request_type.id %}">{{ exchange_request_type.name }}</a>
+    {% endfor %}
+
+
+{% endblock content %}

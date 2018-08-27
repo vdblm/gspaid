@@ -1,14 +1,10 @@
 {% extends 'misc/base.html' %}
 {% block content %}
-<form method="get" action="online_wallet.html">
-    <label for="Rial">Rial: </label>
-    <input type="number" id="Rial" readonly="readonly" value="100000000">
-
-    <label for="Doller">Doller: </label>
-    <input type="number" id="Doller" readonly="readonly" value="100000000">
-
-    <label for="Euro">Euro: </label>
-    <input type="number" id="Euro" readonly="readonly" value="100000000">
+<form method="get" action="{% url 'financial:online_wallet' %}">
+{% for balance in balance_list %}
+    <label for={{ balance.name}}>{{ balance.name }}: </label>
+    <input type="number" id={{ balance.name }} readonly="readonly" value={{ balance.value }}>
+{% endfor %}
 </form>
 
 <br>
@@ -20,23 +16,4 @@
 </form>
 
 <br>
-
-<form method="get" action="{% url 'financial:online_wallet' %}">
-    <label for="amount-to-change">Amount to change:</label>
-    <input type="number" id="amount-to-change">
-    <select id="from-currency" value="$">
-        <option value="$">$</option>
-        <option value="Rial">Rial</option>
-        <option value="Euro">Euro</option>
-    </select>
-    <label for="amount-to-get">Amount you get:</label>
-    <input type="number" readonly="readonly" id="amount-to-get" value="48000">
-    <select id="to-currency" value="$">
-        <option value="$">$</option>
-        <option value="Rial">Rial</option>
-        <option value="Euro">Euro</option>
-    </select>
-    <input id="update-change-info" type="submit" value="update change info">
-    <input id="change" type="submit" value="Change!">
-</form>
 {% endblock content %}

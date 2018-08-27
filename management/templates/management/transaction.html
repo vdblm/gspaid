@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'misc/base.html' %}
+{% block content %}
+        Status: {{ transaction.status }}
+        <br>
+        <br>
+        From Amount: {{ transaction.from_amount }}
+        <br>
+        <br>
+        From Currency: {{ transaction.from_currency }}
+        <br>
+        <br>
+        To Amount: {{ transaction.to_amount }}
+        <br>
+        <br>
+        To Currency: {{ transaction.to_currency }}
+        <br>
+        <br>
+        From User: {{ transaction.from_user }}
+        <br>
+        <br>
+        To User{{ transaction.to_user }}
+        <br>
+        <br>
+        <br>
+        <br>
+
+{% endblock content %}

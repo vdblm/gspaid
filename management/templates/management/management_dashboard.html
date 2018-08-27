@@ -1,76 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Dashboard</title>
-        <link rel="stylesheet" href="../../../documents/design/wireframe/styles.css">
-    </head>
-    <body>
-        <table>
-            <tr>
-                <td width="20%">
-                    <table>
-                        <tbody>
-                        <tr><td><a href="../../../documents/design/wireframe/admin/costumers.html">Users</a></td></tr>
-                        <tr><td><a href="../../../documents/design/wireframe/admin/costumers.html">Customers</a></td></tr>
-                        <tr><td><a href="../../../documents/design/wireframe/admin/employees.html">Employees</a></td></tr>
-                        <tr><td><a href="../../../documents/design/wireframe/admin/requests.html">Requests</a></td></tr>
-                        <tr><td><a href="../../../documents/design/wireframe/admin/charge.html">Charge</a></td></tr>
-                        <tr><td><a href="{% url 'management:management_dashboard' %}">Log (Dashboard)</a></td></tr>
-                        <tr><td><a href="../../../documents/design/wireframe/admin/transactions.html">Currency Report</a></td></tr>
-                        <tr><td><a href="{% url 'management:add_request_type' %}">Create New Request Type</a></td></tr>
-                        <tr><td><a href="{% url 'management:settings' %}">Settings</a></td></tr>
-                        </tbody>
-                    </table>
-                </td>
-                <td width="80%">
-                    <h2>Notifications</h2>
-                    <table>
-                        <thead>
-                        <th>Time</th>
-                        <th>Description</th>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>12:50</td>
-                            <td style="color: red;">Not enough money to pay the salary my lord!</td>
-                        </tr>
-                        <tr>
-                            <td>12:50</td>
-                            <td>Great things are happening in your company my lord!</td>
-                        </tr>
-                        <tr>
-                            <td>12:50</td>
-                            <td>Great things are happening in your company my lord!</td>
-                        </tr>
-                        <tr>
-                            <td>12:50</td>
-                            <td>Great things are happening in your company my lord!</td>
-                        </tr>
-                        <tr>
-                            <td>12:50</td>
-                            <td>Great things are happening in your company my lord!</td>
-                        </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td>
-                                    <h3>Filter By:</h3>
-                                </td>
-                                <td>
-                                    <form>
-                                        <label for="username">User</label>
-                                        <select name="username" id="username">
-                                            <option value="alto">alto</option>
-                                            <option value="gspaid">gspaid</option>
-                                        </select>
-                                    </form>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </td>
-            </tr>
-        </table>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../../../documents/design/wireframe/styles.css">
+</head>
+<body>
+<table>
+    <tr>
+        <td width="20%">
+            <table>
+                <tbody>
+                <tr>
+                    <td><a href="{% url 'management:management_users' %}">Users</a></td>
+                </tr>
+                <tr>
+                    <td><a href="{% url 'management:management_employees' %}">Employees</a></td>
+                </tr>
+                <tr>
+                    <td><a href="{% url 'management:requests' %}">Requests</a></td>
+                </tr>
+                <tr>
+                    <td><a href="{% url 'management:management_wallet' %}">Charge</a></td>
+                </tr>
+                <tr>
+                    <td><a href="{% url 'management:comments' %}">Comments</a></td>
+                </tr>
+                <tr>
+                    <td><a href="{% url 'management:management_dashboard' %}">Log (Dashboard)</a></td>
+                </tr>
+                <tr>
+                    <td><a href="{% url 'management:currency_transactions' %}">Currency Transactions
+                        Report</a></td>
+                </tr>
+                <tr>
+                    <td><a href="{% url 'management:add_request_type' %}">Create New Request Type</a></td>
+                </tr>
+                <tr>
+                    <td><a href="{% url 'management:add_exchange_request_type' %}">Create New Exchange Request Type</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="{% url 'change_profile' %}">Profile</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td width="80%">
+            <h2>Notifications</h2>
+            <table>
+                <thead>
+                <th>Time</th>
+                <th>Description</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>12:50</td>
+                    <td style="color: red;">Not enough money to pay the salary my lord!</td>
+                </tr>
+                <tr>
+                    <td>12:50</td>
+                    <td>Great things are happening in your company my lord!</td>
+                </tr>
+                <tr>
+                    <td>12:50</td>
+                    <td>Great things are happening in your company my lord!</td>
+                </tr>
+                <tr>
+                    <td>12:50</td>
+                    <td>Great things are happening in your company my lord!</td>
+                </tr>
+                <tr>
+                    <td>12:50</td>
+                    <td>Great things are happening in your company my lord!</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td>
+                        <h3>Filter By:</h3>
+                    </td>
+                    <td>
+                        <form>
+                            <label for="username">User</label>
+                            <select name="username" id="username">
+                                <option value="alto">alto</option>
+                                <option value="gspaid">gspaid</option>
+                            </select>
+                        </form>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
 </html>

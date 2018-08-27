@@ -1,9 +1,26 @@
 {% extends 'misc/base.html' %}
 {% block content %}
     {% block page_title %}Request History{% endblock page_title %}
+    {% if user_requests %}
+
     {% for user_request in user_requests %}
          <a href="{% url 'workflow:request_history' user_request.id %}"> Request {{ user_request.request_type.name }} {{ user_request.id }}</a>
     {% endfor %}
+    {% endif %}
+    {% if user_exchange_requests %}
+    {% for user_exchange_request in user_exchange_requests %}
+         <a href="{% url 'workflow:exchange_request_history' user_exchange_request.id %}"> Request {{ user_exchange_requests.request_type.name }} {{ user_exchange_request.id }}</a>
+    {% endfor %}
+    {% endif %}
+
+    {% if user_anonymous_requests %}
+    {% for user_anonymous_request in user_anonymous_requests %}
+         <a href="{% url 'workflow:anonymous_request_history' user_anonymous_request.id %}"> Internal Payment {{ user_anonymous_request.id }}</a>
+    {% endfor %}
+    {% endif %}
+    {% if not user_requests and not user_exchange_requests%}
+        No History
+    {% endif %}
 
 
 {% endblock content %}

@@ -11,8 +11,9 @@ def index(request):
 
 
 def change_profile(request):
+    print(request.user)
     if request.method == 'POST':
-        user_form = UserForm(request.POST)
+        user_form = UserForm(request.POST, instance=request.user)
         if user_form.is_valid():
             user_form.save()
             messages.add_message(request, messages.INFO, 'Profile saved successfully!')

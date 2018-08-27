@@ -1,6 +1,6 @@
 {% extends 'misc/base.html' %}
 {% block content %}
-<form method="get" action="{% url 'financial:online_wallet' %}">
+<form method="get" action="{% url 'management:management_wallet' %}">
 {% for balance in balance_list %}
     <label for={{ balance.name}}>{{ balance.name }}: </label>
     <input type="number" id={{ balance.name }} readonly="readonly" value={{ balance.value }}>
@@ -9,7 +9,7 @@
 
 <br>
 
-<form method="post" action="{% url 'financial:online_wallet' %}">
+<form method="post" action="{% url 'management:management_wallet' %}">
     {% csrf_token %}
     {{ charge_wallet_form }}
     <input type="submit" value="Charge">
