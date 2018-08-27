@@ -33,19 +33,15 @@
 
         <div class="right menu">
             {% if user.is_authenticated %}
-
-                  <a class="browse item active" style="">
+                <div class="ui simple dropdown item">
                         Hi, {{request.user.username}}!
                         <i class="dropdown icon"></i>
-                  </a>
-
-                <div class="ui fluid popup bottom left transition hidden">
-                      <div class="ui link list">
+                    <div class="menu">
                         <a class="item" href="{% url 'auth_logout' %}">Logout</a>
                         <a class="item" href="{% url 'change_profile' %}">Profile</a>
                         <a class="item" href="{% url 'misc:dashboard' %}">Dashboard</a>
-                      </div>
-                </div>
+                    </div>
+                  </div>
             {% else %}
                 <a class="item" href="{% url 'registration_register' %}">Register</a>
                 <a class="item" href="{% url 'auth_login' %}">Login</a>
