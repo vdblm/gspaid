@@ -1,0 +1,13 @@
+{% extends 'misc/base.html' %}
+{% block content %}
+    Anonymous Request
+    <br>
+    Amount: {{ request.amount }}
+    <br>
+    Currency: {{ request.currency }}
+    <br>
+    Destination User Email: {{ request.dst_user.email }}
+    <br>
+    Status: {{ request.transaction.status }}
+
+{% endblock content %}
