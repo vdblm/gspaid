@@ -1,6 +1,6 @@
 {% extends 'misc/base.html' %}
 {% block content %}
-<form method="get" action="{% url 'management:comments' %}">
+<form class="ui form" method="get" action="{% url 'management:comments' %}">
 {% for comment in comments %}
     <label for={{ comment.id}}>From {{ comment.name }}: </label>
     <input type="tex" id={{ comment.id }}a readonly="readonly" value={{ comment.email }}>

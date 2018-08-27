@@ -2,7 +2,7 @@
 {% block content %}
     {% block page_title %}Profile{% endblock page_title %}
 
-            <form action="{% url 'change_profile' %}" method="post">
+            <form class="ui form" action="{% url 'change_profile' %}" method="post">
                 {% csrf_token %}
                 {{ user_form }}
                 <input type="submit" value="Save Profile">

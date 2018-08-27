@@ -1,6 +1,6 @@
 {% extends 'misc/base.html' %}
 {% block content %}
-    <form method="post" action="{% url 'workflow:new_anonymous_request' request_type.id %}">
+    <form class="ui form" method="post" action="{% url 'workflow:new_anonymous_request' request_type.id %}">
         <label for="dst_email">Destination User Email:</label>
         <input id="dst_email">
         <br>

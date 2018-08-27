@@ -1,6 +1,6 @@
 {% extends 'misc/base.html' %}
 {% block content %}
-    <form method="post" action="{% url 'financial:internal_payment' %}">
+    <form class="ui form" method="post" action="{% url 'financial:internal_payment' %}">
         {% csrf_token %}
         {{ new_anonymous_request_form }}
         <input type="submit" value="Submit">

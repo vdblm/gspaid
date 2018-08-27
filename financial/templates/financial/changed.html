@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Charged</title>
-</head>
-<body>
+{% extends 'misc/base.html' %}
+{% block content %}
 <h2>Changed successfully!</h2>
     <a href="{% url 'workflow:dashboard' %}">Home</a>
-</body>
-</html>
+{% endblock content %}

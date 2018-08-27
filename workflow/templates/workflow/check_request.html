@@ -1,6 +1,6 @@
 {% extends 'misc/base.html' %}
 {% block content %}
-    <form method="get" action="{% url 'workflow:check_request' request.id %}">
+    <form class="ui form" method="get" action="{% url 'workflow:check_request' request.id %}">
         Request Type: {{ request.request_type.name }}
         <br>
         Request Status: {{ request.status }}
@@ -18,7 +18,7 @@
 
     <br>
 
-    <form method="post" action="{% url 'workflow:check_request' request.id %}">
+    <form class="ui form" method="post" action="{% url 'workflow:check_request' request.id %}">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Submit">
