@@ -3,9 +3,11 @@ python:
   - "3.5"
   - "3.6"
 
+sudo: no
 install:
   - pip install -r requirements.txt
 
+warnings_are_errors: no
 script:
   - apt-get -q update
   - apt-get -yq install firefox-esr
