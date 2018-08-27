@@ -11,20 +11,20 @@ install:
 
 warnings_are_errors: no
 script:
-  - apt-get -q update
-  - apt-get -yq install firefox-esr
-  - wget -O FirefoxSetup.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
+  - sudo apt-get -q update
+  - suod apt-get -yq install firefox-esr
+  - sudo wget -O FirefoxSetup.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
   - mkdir /opt/firefox
-  - tar xjf FirefoxSetup.tar.bz2 -C /opt/firefox/
-  - mv /usr/lib/firefox-esr/firefox-esr /usr/lib/firefox-esr/firefox-esr_orig
-  - ln -s /opt/firefox/firefox/firefox /usr/lib/firefox-esr/firefox-esr
-  - apt-get -yq install Xvfb
+  - sudo tar xjf FirefoxSetup.tar.bz2 -C /opt/firefox/
+  - sudo mv /usr/lib/firefox-esr/firefox-esr /usr/lib/firefox-esr/firefox-esr_orig
+  - sudo ln -s /opt/firefox/firefox/firefox /usr/lib/firefox-esr/firefox-esr
+  - sudo apt-get -yq install Xvfb
   - initial_dir=`pwd`
   - cd /usr/bin
-  - wget https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-linux64.tar.gz
-  - tar -xvzf geckodriver*
-  - chmod +x geckodriver
-  - cd $initial_dir
-  - export DISPLAY=:1
-  - export DJANGO_WEB_DRIVER_CLASS=Firefox
+  - sudo wget https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-linux64.tar.gz
+  - sudo tar -xvzf geckodriver*
+  - sudo chmod +x geckodriver
+  - sudo cd $initial_dir
+  - sudo export DISPLAY=:1
+  - sudo export DJANGO_WEB_DRIVER_CLASS=Firefox
   - python manage.py test
