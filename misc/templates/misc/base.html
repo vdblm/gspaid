@@ -23,13 +23,41 @@
         {% endif %}
     {% endblock messages %}
 
-    {% if request.user.username %}
-        Hi, {{request.user.username}}!
-    {% endif %}
     <br>
+    <div class="ui top fixed menu">
 
-    {% block content %}
-    {% endblock content %}
+        <a href="{% url 'home' %}" class="header item">
+            GSPaid
+        </a>
+        <a class="item" href="{% url 'misc:rules' %}">Rules</a>
+
+        <div class="right menu">
+            {% if user.is_authenticated %}
+
+                  <a class="browse item active" style="">
+                        Hi, {{request.user.username}}!
+                        <i class="dropdown icon"></i>
+                  </a>
+
+                <div class="ui fluid popup bottom left transition hidden">
+                      <div class="ui link list">
+                        <a class="item" href="{% url 'auth_logout' %}">Logout</a>
+                        <a class="item" href="{% url 'change_profile' %}">Profile</a>
+                        <a class="item" href="{% url 'misc:dashboard' %}">Dashboard</a>
+                      </div>
+                </div>
+            {% else %}
+                <a class="item" href="{% url 'registration_register' %}">Register</a>
+                <a class="item" href="{% url 'auth_login' %}">Login</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="ui grid">
+        <div class="twelve wide centered column">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
 
 </body>
 </html>

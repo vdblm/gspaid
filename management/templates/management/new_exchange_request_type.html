@@ -3,7 +3,7 @@
 <form class="ui form" method="post" action={% url 'management:add_exchange_request_type' %}>
     {% csrf_token %}
     {{ new_exchange_request_type }}
-    <input type="submit" value="Submit">
+    <input type="submit" class="ui primary button" value="Submit">
 
 </form>
 {% endblock content %}

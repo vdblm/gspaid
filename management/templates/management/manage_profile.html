@@ -5,7 +5,7 @@
             <form class="ui form" action="{% url 'management:manage_profile' user_id%}" method="post">
                 {% csrf_token %}
                 {{ user_form }}
-                <input type="submit" value="Save Profile">
+                <input type="submit" class="ui primary button" value="Save Profile">
             </form>
             <a href="{% url 'auth_password_change' %}">Change Password</a>
 

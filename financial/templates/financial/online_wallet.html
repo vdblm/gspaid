@@ -12,7 +12,7 @@
 <form class="ui form" method="post" action="{% url 'financial:online_wallet' %}">
     {% csrf_token %}
     {{ charge_wallet_form }}
-    <input type="submit" value="Charge">
+    <input type="submit" class="ui primary button" value="Charge">
 </form>
 
 <br>
